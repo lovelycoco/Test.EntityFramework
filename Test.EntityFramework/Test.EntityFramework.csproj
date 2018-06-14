@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Migrations\201806122351233_CreateStudent.cs" />
     <Compile Include="Migrations\201806122351233_CreateStudent.Designer.cs">
       <DependentUpon>201806122351233_CreateStudent.cs</DependentUpon>
@@ -54,6 +55,14 @@
     <Compile Include="Migrations\201806140144476_CreateUserRolePermission.cs" />
     <Compile Include="Migrations\201806140144476_CreateUserRolePermission.Designer.cs">
       <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140610122_UpdateUser.cs" />
+    <Compile Include="Migrations\201806140610122_UpdateUser.Designer.cs">
+      <DependentUpon>201806140610122_UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140613060_UpdateUser1.cs" />
+    <Compile Include="Migrations\201806140613060_UpdateUser1.Designer.cs">
+      <DependentUpon>201806140613060_UpdateUser1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
@@ -70,6 +79,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806140144476_CreateUserRolePermission.resx">
       <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140610122_UpdateUser.resx">
+      <DependentUpon>201806140610122_UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140613060_UpdateUser1.resx">
+      <DependentUpon>201806140613060_UpdateUser1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

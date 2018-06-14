@@ -14,7 +14,7 @@ namespace Test.EntityFramework.Repositories
         {
             using (TestDbContext db = new TestDbContext())
             {
-                db.Students.Add(t);
+                db.Set<Student>().Add(t);
                 if (db.SaveChanges()>0)
                 {
                     return true;

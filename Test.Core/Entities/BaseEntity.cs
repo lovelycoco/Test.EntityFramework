@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
-    public abstract class BaseEntity<T>
+    public abstract class BaseEntity<TPrimaryKey>
     {
-        public virtual T Id { get; set; }
-        public virtual DateTime CreatedTime { get; set; }
+        public virtual TPrimaryKey Id { get; set; }
+        public virtual DateTime CreatedTime { get; private set; }
         public virtual DateTime ModifiedTime { get; set; }
         public virtual bool IsDelete { get; set; }
         public BaseEntity()
