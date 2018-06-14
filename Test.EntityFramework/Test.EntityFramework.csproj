@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201806122351233_CreateStudent.Designer.cs">
       <DependentUpon>201806122351233_CreateStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806140144476_CreateUserRolePermission.cs" />
+    <Compile Include="Migrations\201806140144476_CreateUserRolePermission.Designer.cs">
+      <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="TestDbContext.cs" />
@@ -63,6 +67,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806122351233_CreateStudent.resx">
       <DependentUpon>201806122351233_CreateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140144476_CreateUserRolePermission.resx">
+      <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

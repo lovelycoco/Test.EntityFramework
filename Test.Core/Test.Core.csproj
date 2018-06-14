@@ -44,8 +44,12 @@
     <Compile Include="Entities\Test\Course.cs" />
     <Compile Include="Entities\Test\English.cs" />
     <Compile Include="Entities\Test\Math.cs" />
+    <Compile Include="Entities\Test\Permission.cs" />
+    <Compile Include="Entities\Test\Role.cs" />
+    <Compile Include="Entities\Test\RolePermission.cs" />
     <Compile Include="Entities\Test\Student.cs" />
     <Compile Include="Entities\Test\User.cs" />
+    <Compile Include="Entities\Test\UserRole.cs" />
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
