@@ -11,6 +11,8 @@ using Test.Core.IRepository;
 using Test.EntityFramework;
 using Test.EntityFramework.Repositories;
 using System.Data.Entity;
+using System.Linq.Expressions;
+
 namespace ConsoleApp
 {
     class Program
@@ -23,8 +25,9 @@ namespace ConsoleApp
             //Thread.Sleep(3000);
 
             //TestStudent();
-            TestUserRolePermission();
-
+            //TestUserRolePermission();
+            //TestGetRolePermissions();
+            TestGetRolePermissions1();
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds);
             Console.ReadLine();
@@ -42,8 +45,59 @@ namespace ConsoleApp
 
                 throw ex;
             }
+        }
+
+        //延迟加载
+        private static void TestGetRolePermissions()
+        {
+            StringBuilder sb = new StringBuilder();
+            using (TestDbContext db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+
+                var roles = db.Set<Role>().AsNoTracking().ToList();
+                foreach (var role in roles)
+                {
+                    foreach (var rolePermission in role.RolePermissions)
+                    {
+                        sb.Append(rolePermission.Role.RoleName);
+                        sb.Append("-");
+                        sb.Append(rolePermission.Permission.Name);
+                        Console.WriteLine(sb.ToString());
+                        sb.Clear();
+                    }
+
+                }
+            }
+        }
+        //主动加载
+        private static void TestGetRolePermissions1()
+        {
+            StringBuilder sb = new StringBuilder();
+            using (TestDbContext db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+
+                var roles = db.Set<Role>()
+                    .Include(r => r.RolePermissions)
+                    .Include(r => r.RolePermissions.Select(rp => rp.Role))
+                    .Include(r => r.RolePermissions.Select(rp => rp.Permission));
+                    //.AsNoTracking().ToList();
 
 
+                foreach (var role in roles)
+                {
+                    foreach (var rolePermission in role.RolePermissions)
+                    {
+                        sb.Append(rolePermission.Role.RoleName);
+                        sb.Append("-");
+                        sb.Append(rolePermission.Permission.Name);
+                        Console.WriteLine(sb.ToString());
+                        sb.Clear();
+                    }
+
+                }
+            }
         }
 
         private static void TestUserRolePermission()
@@ -61,8 +115,10 @@ namespace ConsoleApp
             permissions.Add(permission4);
             permissions.Add(permission5);
             var role = new Role { RoleName = "管理员" };
+            var rolePermissions = new List<RolePermission>();
             using (TestDbContext db = new TestDbContext())
             {
+                db.Database.Log = Console.WriteLine;
                 using (var tran = db.Database.BeginTransaction())
                 {
                     try
@@ -74,10 +130,19 @@ namespace ConsoleApp
                         db.Set<Permission>().AddRange(permissions);
                         result = db.SaveChanges();
 
-                        
 
+                        db.Set<Role>().Add(role);
+                        result = db.SaveChanges();
 
-                        throw new Exception("我故意的。");
+                        foreach (var permission in permissions)
+                        {
+                            rolePermissions.Add(new RolePermission { Role = role, Permission = permission });
+                        }
+
+                        db.Set<RolePermission>().AddRange(rolePermissions);
+                        result = db.SaveChanges();
+
+                        //throw new Exception("我故意的。");
                     }
                     catch (Exception ex)
                     {
