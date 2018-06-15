@@ -37,12 +37,12 @@ namespace ConsoleApp
             //Thread.Sleep(3000);
 
             //TestStudent();
-            //TestUserRolePermission();
+            TestUserRolePermission();
             //TestGetRolePermissions();
             //TestGetRolePermissions1();
             //TestQueryExits();
             //TestQueryPages();
-            TestQueryContains();
+            //TestQueryContains();
 
 
             stopWatch.Stop();
@@ -85,7 +85,7 @@ namespace ConsoleApp
             {
                 db.Database.Log = Console.WriteLine;
 
-                var permission = db.Set<Permission>().AsNoTracking().OrderBy(p=>p.Name).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                var permission = db.Set<Permission>().AsNoTracking().OrderBy(p => p.Name).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
 
             }
         }
@@ -171,6 +171,7 @@ namespace ConsoleApp
             permissions.Add(permission5);
             var role = new Role { RoleName = "管理员" };
             var rolePermissions = new List<RolePermission>();
+            var userRole = new UserRole { UserId = user.Id, Role = role };
             using (var db = new TestDbContext())
             {
                 db.Database.Log = Console.WriteLine;
@@ -197,7 +198,8 @@ namespace ConsoleApp
                         db.Set<RolePermission>().AddRange(rolePermissions);
                         result = db.SaveChanges();
 
-                        //throw new Exception("我故意的。");
+                        db.Set<UserRole>().Add(userRole);
+                        result = db.SaveChanges();
                     }
                     catch (Exception ex)
                     {
