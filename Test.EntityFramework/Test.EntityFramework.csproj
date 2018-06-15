@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\RoleMap.cs" />
+    <Compile Include="Maps\SupplierMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Migrations\201806122351233_CreateStudent.cs" />
     <Compile Include="Migrations\201806122351233_CreateStudent.Designer.cs">

@@ -45,6 +45,8 @@
     <Compile Include="Entities\Box.cs" />
     <Compile Include="Entities\DictCode.cs" />
     <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\StorageArea.cs" />
+    <Compile Include="Entities\StorageLocation.cs" />
     <Compile Include="Entities\Supplier.cs" />
     <Compile Include="Entities\Test\Course.cs" />
     <Compile Include="Entities\Test\English.cs" />
