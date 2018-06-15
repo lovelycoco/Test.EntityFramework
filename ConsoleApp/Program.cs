@@ -12,6 +12,9 @@ using Test.EntityFramework;
 using Test.EntityFramework.Repositories;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Mapping;
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace ConsoleApp
 {
@@ -20,6 +23,15 @@ namespace ConsoleApp
         private static int result = 0;
         static void Main(string[] args)
         {
+
+            using (var dbcontext = new TestDbContext())
+            {
+                var objectContext = ((IObjectContextAdapter)dbcontext).ObjectContext;
+                var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
+                mappingCollection.GenerateViews(new List<EdmSchemaError>());
+            }
+
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             //Thread.Sleep(3000);
@@ -27,7 +39,12 @@ namespace ConsoleApp
             //TestStudent();
             //TestUserRolePermission();
             //TestGetRolePermissions();
-            TestGetRolePermissions1();
+            //TestGetRolePermissions1();
+            //TestQueryExits();
+            //TestQueryPages();
+            TestQueryContains();
+
+
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds);
             Console.ReadLine();
@@ -47,11 +64,49 @@ namespace ConsoleApp
             }
         }
 
+        private static void TestQueryContains()
+        {
+            using (var db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+
+                //var permission = db.Set<Permission>().AsNoTracking().Where(p=>p.Name.Contains(DbFunctions.AsNonUnicode("permission1"))).ToList();
+                //var permission2 = db.Set<Permission>().AsNoTracking().Where(p => p.Name.StartsWith(DbFunctions.AsNonUnicode("p"))).ToList();
+                var permission3 = db.Set<Permission>().AsNoTracking().Where(p => p.Name.EndsWith(DbFunctions.AsNonUnicode("1"))).ToList();
+
+            }
+        }
+
+        private static void TestQueryPages()
+        {
+            int pageIndex = 1;
+            int pageSize = 1;
+            using (var db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+
+                var permission = db.Set<Permission>().AsNoTracking().OrderBy(p=>p.Name).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            }
+        }
+
+        private static void TestQueryExits()
+        {
+            using (TestDbContext db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+
+                //var user = db.Set<User>().AsNoTracking().Any(u => u.UserName == "wangjunpeng");
+                var user = db.Set<User>().AsNoTracking().Any(u => u.UserName == DbFunctions.AsNonUnicode("wangjunpeng"));
+
+            }
+        }
+
         //延迟加载
         private static void TestGetRolePermissions()
         {
             StringBuilder sb = new StringBuilder();
-            using (TestDbContext db = new TestDbContext())
+            using (var db = new TestDbContext())
             {
                 db.Database.Log = Console.WriteLine;
 
@@ -74,7 +129,7 @@ namespace ConsoleApp
         private static void TestGetRolePermissions1()
         {
             StringBuilder sb = new StringBuilder();
-            using (TestDbContext db = new TestDbContext())
+            using (var db = new TestDbContext())
             {
                 db.Database.Log = Console.WriteLine;
 
@@ -82,7 +137,7 @@ namespace ConsoleApp
                     .Include(r => r.RolePermissions)
                     .Include(r => r.RolePermissions.Select(rp => rp.Role))
                     .Include(r => r.RolePermissions.Select(rp => rp.Permission));
-                    //.AsNoTracking().ToList();
+                //.AsNoTracking().ToList();
 
 
                 foreach (var role in roles)
@@ -116,7 +171,7 @@ namespace ConsoleApp
             permissions.Add(permission5);
             var role = new Role { RoleName = "管理员" };
             var rolePermissions = new List<RolePermission>();
-            using (TestDbContext db = new TestDbContext())
+            using (var db = new TestDbContext())
             {
                 db.Database.Log = Console.WriteLine;
                 using (var tran = db.Database.BeginTransaction())
