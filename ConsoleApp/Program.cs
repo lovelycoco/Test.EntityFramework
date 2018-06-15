@@ -72,7 +72,7 @@ namespace ConsoleApp
 
                 //var permission = db.Set<Permission>().AsNoTracking().Where(p=>p.Name.Contains(DbFunctions.AsNonUnicode("permission1"))).ToList();
                 //var permission2 = db.Set<Permission>().AsNoTracking().Where(p => p.Name.StartsWith(DbFunctions.AsNonUnicode("p"))).ToList();
-                var permission3 = db.Set<Permission>().AsNoTracking().Where(p => p.Name.EndsWith(DbFunctions.AsNonUnicode("1"))).ToList();
+                var permission3 = db.Set<Permission>().AsNoTracking().Where(p => p.PermissionName.EndsWith(DbFunctions.AsNonUnicode("1"))).ToList();
 
             }
         }
@@ -85,7 +85,7 @@ namespace ConsoleApp
             {
                 db.Database.Log = Console.WriteLine;
 
-                var permission = db.Set<Permission>().AsNoTracking().OrderBy(p => p.Name).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                var permission = db.Set<Permission>().AsNoTracking().OrderBy(p => p.PermissionName).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
 
             }
         }
@@ -117,7 +117,7 @@ namespace ConsoleApp
                     {
                         sb.Append(rolePermission.Role.RoleName);
                         sb.Append("-");
-                        sb.Append(rolePermission.Permission.Name);
+                        sb.Append(rolePermission.Permission.PermissionName);
                         Console.WriteLine(sb.ToString());
                         sb.Clear();
                     }
@@ -146,7 +146,7 @@ namespace ConsoleApp
                     {
                         sb.Append(rolePermission.Role.RoleName);
                         sb.Append("-");
-                        sb.Append(rolePermission.Permission.Name);
+                        sb.Append(rolePermission.Permission.PermissionName);
                         Console.WriteLine(sb.ToString());
                         sb.Clear();
                     }
@@ -158,11 +158,11 @@ namespace ConsoleApp
         private static void TestUserRolePermission()
         {
             var user = new User { UserName = "wangjunpeng", Password = "123456", Email = "junpeng1949@163.com", NormalizedUserName = "王俊鹏" };
-            var permission1 = new Permission { Name = "permission1", FeatureName = "权限1", Description = "权限1的描述" };
-            var permission2 = new Permission { Name = "permission2", FeatureName = "权限2", Description = "权限2的描述" };
-            var permission3 = new Permission { Name = "permission3", FeatureName = "权限3", Description = "权限3的描述" };
-            var permission4 = new Permission { Name = "permission4", FeatureName = "权限4", Description = "权限4的描述" };
-            var permission5 = new Permission { Name = "permission5", FeatureName = "权限5", Description = "权限5的描述" };
+            var permission1 = new Permission { PermissionName = "permission1", FeatureName = "权限1", Description = "权限1的描述" };
+            var permission2 = new Permission { PermissionName = "permission2", FeatureName = "权限2", Description = "权限2的描述" };
+            var permission3 = new Permission { PermissionName = "permission3", FeatureName = "权限3", Description = "权限3的描述" };
+            var permission4 = new Permission { PermissionName = "permission4", FeatureName = "权限4", Description = "权限4的描述" };
+            var permission5 = new Permission { PermissionName = "permission5", FeatureName = "权限5", Description = "权限5的描述" };
             var permissions = new List<Permission>();
             permissions.Add(permission1);
             permissions.Add(permission2);

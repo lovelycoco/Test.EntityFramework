@@ -4,15 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.Entities.Test
+namespace Test.Core.Entities
 {
-    public class Role : BaseEntity<Guid>
+    /// <summary>
+    /// 角色表
+    /// </summary>
+    public class Role : BaseEntityOfGuid
     {
+        /// <summary>
+        /// 角色名称
+        /// </summary>
         public virtual string RoleName { get; set; }
+        /// <summary>
+        /// 角色权限关系
+        /// </summary>
         public virtual IList<RolePermission>  RolePermissions { get; set; }
         public Role()
         {
-            base.Id = Guid.NewGuid();
             RolePermissions = new List<RolePermission>();
         }
     }

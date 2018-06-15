@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
+    /// <summary>
+    /// 抽象基类
+    /// </summary>
+    /// <typeparam name="TPrimaryKey"></typeparam>
     public abstract class BaseEntity<TPrimaryKey>
     {
         public virtual TPrimaryKey Id { get; set; }
