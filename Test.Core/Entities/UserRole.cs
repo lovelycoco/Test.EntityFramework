@@ -15,13 +15,14 @@ namespace Test.Core.Entities.Test
         /// 用户id
         /// </summary>
         public virtual Guid UserId { get; set; }
+        public virtual Guid RoleId { get; set; }
         /// <summary>
         /// 角色
         /// </summary>
         public virtual Role Role { get; set; }
         public UserRole()
         {
-           
+
         }
     }
 }

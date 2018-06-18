@@ -7,13 +7,13 @@ namespace Test.EntityFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateUserRolePermission : IMigrationMetadata
+    public sealed partial class ModifyEntity1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateUserRolePermission));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifyEntity1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806140144476_CreateUserRolePermission"; }
+            get { return "201806182352263_ModifyEntity1"; }
         }
         
         string IMigrationMetadata.Source

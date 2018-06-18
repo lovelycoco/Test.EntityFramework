@@ -11,7 +11,13 @@ namespace Test.Core.Entities
     /// </summary>
     public class DictCode : BaseEntityOfGuid
     {
+        /// <summary>
+        /// 数据类型
+        /// </summary>
         public virtual string DictType { get; set; }
+        /// <summary>
+        /// 数据名称
+        /// </summary>
         public virtual string TypeName { get; set; }
 
         public DictCode()

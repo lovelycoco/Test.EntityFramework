@@ -9,16 +9,12 @@ namespace Test.Core.Entities
     /// <summary>
     /// 器具表
     /// </summary>
-   public class Box: BaseEntityOfGuid
+    public class Box : BaseEntityOfGuid
     {
-       
-
-
-
-
+        public virtual string BoxCode { get; set; }
         public Box()
         {
-            
+
         }
     }
 }

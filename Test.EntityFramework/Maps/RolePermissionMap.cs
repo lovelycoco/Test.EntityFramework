@@ -8,15 +8,13 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class RoleMap:EntityTypeConfiguration<Role>
+    public class RolePermissionMap:EntityTypeConfiguration<RolePermission>
     {
-        public RoleMap()
+        public RolePermissionMap()
         {
-            ToTable("Role");
+            ToTable("RolePermission");
             HasKey(t=>t.Id);
-
-            Property(t=>t.RoleName).IsRequired().HasMaxLength(50);
-            HasMany(t => t.RolePermissions).WithRequired(r => r.Role).HasForeignKey(k => k.RoleId);
+            
         }
     }
 }

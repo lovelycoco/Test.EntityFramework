@@ -47,24 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\PermissionMap.cs" />
     <Compile Include="Maps\RoleMap.cs" />
+    <Compile Include="Maps\RolePermissionMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
-    <Compile Include="Migrations\201806122351233_CreateStudent.cs" />
-    <Compile Include="Migrations\201806122351233_CreateStudent.Designer.cs">
-      <DependentUpon>201806122351233_CreateStudent.cs</DependentUpon>
+    <Compile Include="Maps\UserRoleMap.cs" />
+    <Compile Include="Migrations\201806182327124_CreateEntity.cs" />
+    <Compile Include="Migrations\201806182327124_CreateEntity.Designer.cs">
+      <DependentUpon>201806182327124_CreateEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806140144476_CreateUserRolePermission.cs" />
-    <Compile Include="Migrations\201806140144476_CreateUserRolePermission.Designer.cs">
-      <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
+    <Compile Include="Migrations\201806182351233_ModifyEntity.cs" />
+    <Compile Include="Migrations\201806182351233_ModifyEntity.Designer.cs">
+      <DependentUpon>201806182351233_ModifyEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806140610122_UpdateUser.cs" />
-    <Compile Include="Migrations\201806140610122_UpdateUser.Designer.cs">
-      <DependentUpon>201806140610122_UpdateUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806140613060_UpdateUser1.cs" />
-    <Compile Include="Migrations\201806140613060_UpdateUser1.Designer.cs">
-      <DependentUpon>201806140613060_UpdateUser1.cs</DependentUpon>
+    <Compile Include="Migrations\201806182352263_ModifyEntity1.cs" />
+    <Compile Include="Migrations\201806182352263_ModifyEntity1.Designer.cs">
+      <DependentUpon>201806182352263_ModifyEntity1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
@@ -76,24 +75,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806122351233_CreateStudent.resx">
-      <DependentUpon>201806122351233_CreateStudent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806140144476_CreateUserRolePermission.resx">
-      <DependentUpon>201806140144476_CreateUserRolePermission.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806140610122_UpdateUser.resx">
-      <DependentUpon>201806140610122_UpdateUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806140613060_UpdateUser1.resx">
-      <DependentUpon>201806140613060_UpdateUser1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Test.Core\Test.Core.csproj">
       <Project>{b85c16ef-c570-4120-a04b-68e7711ae10e}</Project>
       <Name>Test.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806182327124_CreateEntity.resx">
+      <DependentUpon>201806182327124_CreateEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806182351233_ModifyEntity.resx">
+      <DependentUpon>201806182351233_ModifyEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806182352263_ModifyEntity1.resx">
+      <DependentUpon>201806182352263_ModifyEntity1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

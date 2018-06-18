@@ -15,12 +15,12 @@ namespace Test.EntityFramework
     public class TestDbContext : DbContext
     {
 
-        public IDbSet<Student> Students { get; set; }
+        //public IDbSet<Student> Students { get; set; }
         public IDbSet<User> Users { get; set; }
-        public IDbSet<Role> Roles { get; set; }
-        public IDbSet<Permission> Permissions { get; set; }
-        public IDbSet<UserRole> UserRoles { get; set; }
-        public IDbSet<RolePermission> RolePermissions { get; set; }
+        //public IDbSet<Role> Roles { get; set; }
+        //public IDbSet<Permission> Permissions { get; set; }
+        //public IDbSet<UserRole> UserRoles { get; set; }
+        //public IDbSet<RolePermission> RolePermissions { get; set; }
 
         public TestDbContext() : base("name=Default")
         {
@@ -40,7 +40,7 @@ namespace Test.EntityFramework
 
 
 
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }
     }

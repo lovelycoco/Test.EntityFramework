@@ -44,6 +44,7 @@
     <Compile Include="Entities\BaseEntityOfGuid.cs" />
     <Compile Include="Entities\Box.cs" />
     <Compile Include="Entities\DictCode.cs" />
+    <Compile Include="Entities\Material.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageLocation.cs" />

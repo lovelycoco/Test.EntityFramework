@@ -3,16 +3,16 @@ namespace Test.EntityFramework.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateUser1 : DbMigration
+    public partial class ModifyEntity1 : DbMigration
     {
         public override void Up()
         {
-            AlterColumn("dbo.User", "Email", c => c.String(maxLength: 255, unicode: false));
+            RenameTable(name: "dbo.UserRoleMap", newName: "UserRole");
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.User", "Email", c => c.String());
+            RenameTable(name: "dbo.UserRole", newName: "UserRoleMap");
         }
     }
 }
