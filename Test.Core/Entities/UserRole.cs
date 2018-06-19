@@ -15,6 +15,10 @@ namespace Test.Core.Entities.Test
         /// 用户id
         /// </summary>
         public virtual Guid UserId { get; set; }
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public virtual User User { get; set; }
         public virtual Guid RoleId { get; set; }
         /// <summary>
         /// 角色

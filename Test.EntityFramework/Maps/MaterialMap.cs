@@ -20,7 +20,7 @@ namespace Test.EntityFramework.Maps
 
             HasRequired(t => t.Supplier).WithMany(s => s.Materials).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
 
-            HasOptional(t => t.StorageLocation).WithOptionalDependent(s => s.Material);
+            HasOptional(x=>x.StorageLocation).WithOptionalDependent(s => s.Material).Map(x=>x.MapKey("StorageLocationId"));
             
         }
     }

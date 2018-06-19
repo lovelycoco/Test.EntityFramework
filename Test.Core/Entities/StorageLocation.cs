@@ -37,10 +37,6 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual StorageArea StorageArea { get; set; }
         /// <summary>
-        /// 物料Id
-        /// </summary>
-        public virtual Guid MaterialId { get; set; }
-        /// <summary>
         /// 物料信息
         /// </summary>
         public virtual Material Material { get; set; }

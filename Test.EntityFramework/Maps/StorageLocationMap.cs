@@ -20,7 +20,7 @@ namespace Test.EntityFramework.Maps
 
             HasMany(t => t.UserStorageLocations).WithRequired(s => s.StorageLocation).HasForeignKey(k => k.SotrageLocationId);
 
-            HasOptional(t => t.Material).WithOptionalPrincipal(s => s.StorageLocation);
+            //HasOptional(t => t.Material).WithOptionalPrincipal(s => s.StorageLocation);
 
         }
     }

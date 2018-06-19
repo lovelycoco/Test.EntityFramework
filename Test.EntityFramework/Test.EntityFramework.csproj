@@ -53,11 +53,14 @@
     <Compile Include="Maps\RolePermissionMap.cs" />
     <Compile Include="Maps\StorageAreaMap.cs" />
     <Compile Include="Maps\StorageLocationMap.cs" />
-    <Compile Include="Maps\StudentMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageLocationMap.cs" />
+    <Compile Include="Migrations\201806191138101_CreateEntity.cs" />
+    <Compile Include="Migrations\201806191138101_CreateEntity.Designer.cs">
+      <DependentUpon>201806191138101_CreateEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="TestDbContext.cs" />
@@ -72,6 +75,11 @@
       <Project>{b85c16ef-c570-4120-a04b-68e7711ae10e}</Project>
       <Name>Test.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806191138101_CreateEntity.resx">
+      <DependentUpon>201806191138101_CreateEntity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

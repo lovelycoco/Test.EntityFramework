@@ -47,6 +47,7 @@
     <Compile Include="Entities\DictCode.cs" />
     <Compile Include="Entities\Material.cs" />
     <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\PickingList.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageLocation.cs" />
     <Compile Include="Entities\Supplier.cs" />
@@ -65,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,10 +46,6 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual Supplier Supplier { get; set; }
         /// <summary>
-        /// 库位Id
-        /// </summary>
-        public virtual Guid StorageLocationId { get; set; }
-        /// <summary>
         /// 库位信息
         /// </summary>
         public virtual StorageLocation StorageLocation { get; set; }
