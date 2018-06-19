@@ -19,6 +19,7 @@ namespace Test.EntityFramework.Maps
             Property(t => t.NormalizedUserName).IsRequired().HasMaxLength(255);
             Property(t => t.Password).IsRequired().HasColumnType("varchar").HasMaxLength(255);
             Property(t => t.Email).HasColumnType("varchar").HasMaxLength(255);
+
         }
     }
 }

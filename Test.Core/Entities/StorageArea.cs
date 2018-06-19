@@ -11,8 +11,35 @@ namespace Test.Core.Entities
     /// </summary>
     public class StorageArea : BaseEntityOfGuid
     {
-        public virtual int AreaCode { get; set; }
+        /// <summary>
+        /// 库区编号
+        /// </summary>
+        public virtual string AreaCode { get; set; }
+        /// <summary>
+        /// 库区名称
+        /// </summary>
+        public virtual string AreaName { get; set; }
+        /// <summary>
+        /// 库区类型
+        /// </summary>
         public virtual int AreaType { get; set; }
+        /// <summary>
+        /// 库区描述
+        /// </summary>
+        public virtual string Description { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsEnabled { get; set; }
+        /// <summary>
+        /// 库位集合
+        /// </summary>
+        public virtual IList<StorageLocation> StorageLocations { get;  set; }
+        public StorageArea()
+        {
+            IsEnabled = true;
+            StorageLocations = new List<StorageLocation>();
+        }
 
     }
 }

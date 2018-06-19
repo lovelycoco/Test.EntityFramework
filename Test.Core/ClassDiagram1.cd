@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Test.Core.Entities.BaseEntity&lt;TPrimaryKey&gt;" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAQAAAAE=</HashCode>
+      <FileName>Entities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.BaseEntityOfGuid" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\BaseEntityOfGuid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Box" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Box.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.DictCode" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\DictCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Material">
+    <Position X="23" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACIAAgAEAAACAAAAAAAAAAAAAAAEgAAM=</HashCode>
+      <FileName>Entities\Material.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Note">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Permission">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAACAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Permission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Role" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.RolePermission" Collapsed="true">
+    <Position X="18.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAEAAEAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\RolePermission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.StorageArea">
+    <Position X="25.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAgEAAAAAEAAAAEAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\StorageArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.StorageLocation">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAgAAAAAAIAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Entities\StorageLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Supplier">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEA=</HashCode>
+      <FileName>Entities\Supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Student" Collapsed="true">
+    <Position X="27.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Test\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.User" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAgAAAAAAAAAQgAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Test.Course" Collapsed="true">
+    <Position X="30.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Test\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Test.English" Collapsed="true">
+    <Position X="29.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Test\English.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Test.Math" Collapsed="true">
+    <Position X="32" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Test\Math.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test.Core.Entities.Test.UserRole" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Test.Core.IRepository.IRepository&lt;TEntity&gt;">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRepository\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

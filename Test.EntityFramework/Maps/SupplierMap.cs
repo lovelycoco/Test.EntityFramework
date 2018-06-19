@@ -16,6 +16,8 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
             Property(t => t.SupplierName).IsRequired().HasMaxLength(50);
             Property(t => t.SupplierCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
+
+           
         }
     }
 }

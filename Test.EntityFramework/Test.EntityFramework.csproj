@@ -47,23 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\MaterialMap.cs" />
     <Compile Include="Maps\PermissionMap.cs" />
     <Compile Include="Maps\RoleMap.cs" />
     <Compile Include="Maps\RolePermissionMap.cs" />
+    <Compile Include="Maps\StorageAreaMap.cs" />
+    <Compile Include="Maps\StorageLocationMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
-    <Compile Include="Migrations\201806182327124_CreateEntity.cs" />
-    <Compile Include="Migrations\201806182327124_CreateEntity.Designer.cs">
-      <DependentUpon>201806182327124_CreateEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806182351233_ModifyEntity.cs" />
-    <Compile Include="Migrations\201806182351233_ModifyEntity.Designer.cs">
-      <DependentUpon>201806182351233_ModifyEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806182352263_ModifyEntity1.cs" />
-    <Compile Include="Migrations\201806182352263_ModifyEntity1.Designer.cs">
-      <DependentUpon>201806182352263_ModifyEntity1.cs</DependentUpon>
+    <Compile Include="Maps\UserStorageLocationMap.cs" />
+    <Compile Include="Migrations\201806190826003_CreateEntity.cs" />
+    <Compile Include="Migrations\201806190826003_CreateEntity.Designer.cs">
+      <DependentUpon>201806190826003_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
@@ -81,14 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806182327124_CreateEntity.resx">
-      <DependentUpon>201806182327124_CreateEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806182351233_ModifyEntity.resx">
-      <DependentUpon>201806182351233_ModifyEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806182352263_ModifyEntity1.resx">
-      <DependentUpon>201806182352263_ModifyEntity1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806190826003_CreateEntity.resx">
+      <DependentUpon>201806190826003_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

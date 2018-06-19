@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\BaseEntityOfGuid.cs" />
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="BaseEntityOfGuid.cs" />
     <Compile Include="Entities\Box.cs" />
     <Compile Include="Entities\DictCode.cs" />
     <Compile Include="Entities\Material.cs" />
@@ -58,9 +58,12 @@
     <Compile Include="Entities\Test\Student.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Entities\UserStorageLocation.cs" />
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
