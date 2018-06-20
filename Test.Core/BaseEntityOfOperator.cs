@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.Entities
+namespace Test.Core
 {
     /// <summary>
-    /// 备货单
+    /// 操作人员基类
     /// </summary>
-    public class PickingList:BaseEntityOfGuid
+    public class BaseEntityOfOperator:BaseEntityOfGuid
     {
         /// <summary>
-        /// 
+        /// 操作员
         /// </summary>
-        public virtual string PickingListNo { get; set; }
+        public virtual Guid Operator{ get; set; }
     }
 }

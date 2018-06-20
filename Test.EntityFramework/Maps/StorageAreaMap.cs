@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -15,12 +16,13 @@ namespace Test.EntityFramework.Maps
             ToTable("StorageArea");
             HasKey(t => t.Id);
 
-            Property(t => t.AreaCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
-            Property(t => t.AreaName).IsRequired().HasMaxLength(50);
-            Property(t => t.Description).IsOptional().HasMaxLength(255);
+            Property(t => t.AreaCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.AreaName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.AreaDescription).IsOptional().HasMaxLength(255).IsConcurrencyToken();
+            Property(t => t.IsEnabled).IsConcurrencyToken();
 
-            HasMany(t => t.StorageLocations).WithRequired(s => s.StorageArea).HasForeignKey(s => s.StorageAreaId).WillCascadeOnDelete(false);
-
+            HasMany(t => t.StorageBins).WithRequired(s => s.StorageArea).HasForeignKey(s => s.StorageAreaId).WillCascadeOnDelete(false);
+            Map<EntityStorageArea>(e => e.Requires("AreaType").HasValue(1)).Map<VirtualStorageArea>(r => r.Requires("AreaType").HasValue(2));
         }
     }
 }

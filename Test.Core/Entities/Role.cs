@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 角色表
     /// </summary>
-    public class Role : BaseEntityOfGuid
+    public class Role : BaseEntityOfOperator
     {
         /// <summary>
         /// 角色名称

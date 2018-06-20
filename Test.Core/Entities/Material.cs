@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
-    public class Material : BaseEntityOfGuid
+    public class Material : BaseEntityOfOperator
     {
         /// <summary>
         /// 物料编码
@@ -20,7 +20,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 收容数量
         /// </summary>
-        public virtual int PackageNumber { get; set; }
+        public virtual int PackageNum { get; set; }
         /// <summary>
         /// 高储
         /// </summary>
@@ -48,14 +48,14 @@ namespace Test.Core.Entities
         /// <summary>
         /// 库位信息
         /// </summary>
-        public virtual StorageLocation StorageLocation { get; set; }
+        public virtual StorageBin StorageBin { get; set; }
 
         public Material()
         {
             IsEnabled = true;
             HighStorage = 0;
             LowStorage = 0;
-            PackageNumber = 0;
+            PackageNum = 0;
             PriorityLevel = 0;
         }
 

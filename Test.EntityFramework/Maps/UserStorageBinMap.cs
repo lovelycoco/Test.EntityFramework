@@ -8,11 +8,11 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class UserStorageLocationMap:EntityTypeConfiguration<UserStorageLocation>
+    public class UserStorageBinMap:EntityTypeConfiguration<UserStorageBin>
     {
-        public UserStorageLocationMap()
+        public UserStorageBinMap()
         {
-            ToTable("UserStorageLocation");
+            ToTable("UserStorageBin");
             HasKey(t=>t.Id);
         }
     }

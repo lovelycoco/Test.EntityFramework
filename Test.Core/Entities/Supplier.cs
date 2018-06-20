@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
-    public class Supplier : BaseEntityOfGuid
+    public class Supplier : BaseEntityOfOperator
     {
         /// <summary>
         /// 供应商名称

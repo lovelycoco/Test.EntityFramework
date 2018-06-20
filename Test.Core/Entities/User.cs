@@ -10,7 +10,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 用户表
     /// </summary>
-    public class User : BaseEntityOfGuid
+    public class User : BaseEntityOfOperator
     {
         /// <summary>
         /// 用户名称

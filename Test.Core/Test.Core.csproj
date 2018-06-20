@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="BaseEntityOfGuid.cs" />
-    <Compile Include="Entities\Box.cs" />
-    <Compile Include="Entities\DictCode.cs" />
+    <Compile Include="BaseEntityOfOperator.cs" />
+    <Compile Include="Entities\DataDictionary.cs" />
+    <Compile Include="Entities\DataDictionaryInfo.cs" />
     <Compile Include="Entities\Material.cs" />
-    <Compile Include="Entities\Note.cs" />
-    <Compile Include="Entities\PickingList.cs" />
+    <Compile Include="Entities\PickupList.cs" />
+    <Compile Include="Entities\Pickup.cs" />
     <Compile Include="Entities\StorageArea.cs" />
-    <Compile Include="Entities\StorageLocation.cs" />
+    <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />
     <Compile Include="Entities\Test\Course.cs" />
     <Compile Include="Entities\Test\English.cs" />
@@ -60,7 +61,7 @@
     <Compile Include="Entities\Test\Student.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />
-    <Compile Include="Entities\UserStorageLocation.cs" />
+    <Compile Include="Entities\UserStorageBin.cs" />
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

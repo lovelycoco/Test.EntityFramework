@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 库区
     /// </summary>
-    public class StorageArea : BaseEntityOfGuid
+    public class StorageArea : BaseEntityOfOperator
     {
         /// <summary>
         /// 库区编号
@@ -20,13 +20,9 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string AreaName { get; set; }
         /// <summary>
-        /// 库区类型
-        /// </summary>
-        public virtual int AreaType { get; set; }
-        /// <summary>
         /// 库区描述
         /// </summary>
-        public virtual string Description { get; set; }
+        public virtual string AreaDescription { get; set; }
         /// <summary>
         /// 是否启用
         /// </summary>
@@ -34,12 +30,26 @@ namespace Test.Core.Entities
         /// <summary>
         /// 库位集合
         /// </summary>
-        public virtual IList<StorageLocation> StorageLocations { get;  set; }
+        public virtual IList<StorageBin> StorageBins { get; set; }
         public StorageArea()
         {
             IsEnabled = true;
-            StorageLocations = new List<StorageLocation>();
+            StorageBins = new List<StorageBin>();
         }
 
+    }
+
+    /// <summary>
+    /// 实体库区
+    /// </summary>
+    public class EntityStorageArea : StorageArea
+    {
+    }
+
+    /// <summary>
+    /// 虚拟库区
+    /// </summary>
+    public class VirtualStorageArea : StorageArea
+    {
     }
 }

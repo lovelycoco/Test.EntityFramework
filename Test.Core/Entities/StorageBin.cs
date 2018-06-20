@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
-    public class StorageLocation : BaseEntityOfGuid
+    /// <summary>
+    /// 库位信息
+    /// </summary>
+    public class StorageBin : BaseEntityOfOperator
     {
         /// <summary>
         /// 库位编码
         /// </summary>
-        public virtual string LocationCode { get; set; }
+        public virtual string BinCode { get; set; }
         /// <summary>
         /// 库位名称
         /// </summary>
-        public virtual string LocationName { get; set; }
+        public virtual string BinName { get; set; }
         /// <summary>
         /// 库位描述
         /// </summary>
-        public virtual string Description { get; set; }
-        /// <summary>
-        /// 库位类型
-        /// </summary>
-        public virtual int LocationType { get; set; }
+        public virtual string BinDescription { get; set; }
         /// <summary>
         /// 是否使用
         /// </summary>
@@ -43,12 +42,24 @@ namespace Test.Core.Entities
         /// <summary>
         /// 责任用户
         /// </summary>
-        public virtual IList<UserStorageLocation> UserStorageLocations { get; set; }
+        public virtual IList<UserStorageBin> UserStorageBins { get; set; }
 
-        public StorageLocation()
+        public StorageBin()
         {
             IsEnabled = true;
-            UserStorageLocations = new List<UserStorageLocation>();
+            UserStorageBins = new List<UserStorageBin>();
         }
+    }
+    /// <summary>
+    /// 实体库位
+    /// </summary>
+    public class EntityStorageBin : StorageBin
+    {
+    }
+    /// <summary>
+    /// 虚拟库位
+    /// </summary>
+    public class VirtualStorageBin : StorageBin
+    {
     }
 }

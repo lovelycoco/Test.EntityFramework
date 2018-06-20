@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 权限信息
     /// </summary>
-    public class Permission : BaseEntityOfGuid
+    public class Permission : BaseEntityOfOperator
     {
         /// <summary>
         /// 权限名称

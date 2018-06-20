@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 责任人与库位关系
     /// </summary>
-    public class UserStorageLocation:BaseEntityOfGuid
+    public class UserStorageBin:BaseEntityOfGuid
     {
         /// <summary>
         /// 责任人Id
@@ -22,10 +22,10 @@ namespace Test.Core.Entities
         /// <summary>
         /// 库位Id
         /// </summary>
-        public virtual Guid SotrageLocationId { get; set; }
+        public virtual Guid StorageBinId { get; set; }
         /// <summary>
         /// 库位
         /// </summary>
-        public virtual StorageLocation StorageLocation { get; set; }
+        public virtual StorageBin StorageBin { get; set; }
     }
 }
