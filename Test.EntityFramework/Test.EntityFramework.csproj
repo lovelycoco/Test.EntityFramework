@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\BatchMap.cs" />
     <Compile Include="Maps\DataDictionaryInfoMap.cs" />
     <Compile Include="Maps\DataDictionaryMap.cs" />
+    <Compile Include="Maps\MaterialListMap.cs" />
     <Compile Include="Maps\MaterialMap.cs" />
     <Compile Include="Maps\PermissionMap.cs" />
     <Compile Include="Maps\PickupListMap.cs" />
@@ -58,12 +60,13 @@
     <Compile Include="Maps\StorageAreaMap.cs" />
     <Compile Include="Maps\StorageBinMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
+    <Compile Include="Maps\TagMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806210005090_CreateEntity.cs" />
-    <Compile Include="Migrations\201806210005090_CreateEntity.Designer.cs">
-      <DependentUpon>201806210005090_CreateEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806210657550_CreateEntity.cs" />
+    <Compile Include="Migrations\201806210657550_CreateEntity.Designer.cs">
+      <DependentUpon>201806210657550_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
@@ -83,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806210005090_CreateEntity.resx">
-      <DependentUpon>201806210005090_CreateEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806210657550_CreateEntity.resx">
+      <DependentUpon>201806210657550_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

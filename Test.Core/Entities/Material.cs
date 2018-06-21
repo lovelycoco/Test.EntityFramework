@@ -49,6 +49,14 @@ namespace Test.Core.Entities
         /// 库位信息
         /// </summary>
         public virtual StorageBin StorageBin { get; set; }
+        /// <summary>
+        /// 字典信息Id
+        /// </summary>
+        public virtual Guid DataDictionaryInfoId { get; set; }
+        /// <summary>
+        /// 物料类型
+        /// </summary>
+        public virtual DataDictionaryInfo MaterialType { get; set; }
 
         public Material()
         {

@@ -8,6 +8,21 @@ namespace Test.EntityFramework.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Batch",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        BatchCode = c.String(),
+                        ProductionDate = c.DateTime(),
+                        IsSealed = c.Boolean(nullable: false),
+                        SealedTime = c.DateTime(),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.DataDictionaryInfo",
                 c => new
                     {
@@ -39,6 +54,30 @@ namespace Test.EntityFramework.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.MaterialList",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        BillOrder = c.String(nullable: false, maxLength: 50, unicode: false),
+                        MaterialId = c.Guid(nullable: false),
+                        BatchId = c.Guid(nullable: false),
+                        ArrivalDate = c.DateTime(nullable: false),
+                        MaterialNum = c.Int(nullable: false),
+                        DataDictionaryInfoId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Batch", t => t.BatchId, cascadeDelete: true)
+                .ForeignKey("dbo.Material", t => t.MaterialId, cascadeDelete: true)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.DataDictionaryInfoId, cascadeDelete: true)
+                .Index(t => t.MaterialId)
+                .Index(t => t.BatchId)
+                .Index(t => t.DataDictionaryInfoId);
+            
+            CreateTable(
                 "dbo.Material",
                 c => new
                     {
@@ -51,6 +90,7 @@ namespace Test.EntityFramework.Migrations
                         IsEnabled = c.Boolean(nullable: false),
                         PriorityLevel = c.Int(nullable: false),
                         SupplierId = c.Guid(nullable: false),
+                        DataDictionaryInfoId = c.Guid(nullable: false),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
@@ -58,9 +98,11 @@ namespace Test.EntityFramework.Migrations
                         StorageBinId = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.DataDictionaryInfoId, cascadeDelete: true)
                 .ForeignKey("dbo.StorageBin", t => t.StorageBinId)
                 .ForeignKey("dbo.Supplier", t => t.SupplierId)
                 .Index(t => t.SupplierId)
+                .Index(t => t.DataDictionaryInfoId)
                 .Index(t => t.StorageBinId);
             
             CreateTable(
@@ -232,6 +274,24 @@ namespace Test.EntityFramework.Migrations
                 .Index(t => t.PermissionId);
             
             CreateTable(
+                "dbo.Tag",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TagCode = c.String(nullable: false, maxLength: 50, unicode: false),
+                        IsEnabled = c.Boolean(nullable: false),
+                        DataDictionaryInfoId = c.Guid(nullable: false),
+                        TagMemo = c.String(nullable: false, maxLength: 255),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.DataDictionaryInfoId, cascadeDelete: true)
+                .Index(t => t.DataDictionaryInfoId);
+            
+            CreateTable(
                 "dbo.UserRole",
                 c => new
                     {
@@ -254,19 +314,25 @@ namespace Test.EntityFramework.Migrations
         {
             DropForeignKey("dbo.UserRole", "UserId", "dbo.User");
             DropForeignKey("dbo.UserRole", "RoleId", "dbo.Role");
+            DropForeignKey("dbo.Tag", "DataDictionaryInfoId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.RolePermission", "RoleId", "dbo.Role");
             DropForeignKey("dbo.RolePermission", "PermissionId", "dbo.Permission");
             DropForeignKey("dbo.Pickup", "DataDictionaryInfoId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.PickupList", "PickingListId", "dbo.Pickup");
             DropForeignKey("dbo.PickupList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.MaterialList", "DataDictionaryInfoId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.MaterialList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Material", "SupplierId", "dbo.Supplier");
             DropForeignKey("dbo.Material", "StorageBinId", "dbo.StorageBin");
             DropForeignKey("dbo.UserStorageBin", "StorageBinId", "dbo.StorageBin");
             DropForeignKey("dbo.UserStorageBin", "UserId", "dbo.User");
             DropForeignKey("dbo.StorageBin", "StorageAreaId", "dbo.StorageArea");
+            DropForeignKey("dbo.Material", "DataDictionaryInfoId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.MaterialList", "BatchId", "dbo.Batch");
             DropForeignKey("dbo.DataDictionaryInfo", "DataDictionaryId", "dbo.DataDictionary");
             DropIndex("dbo.UserRole", new[] { "RoleId" });
             DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.Tag", new[] { "DataDictionaryInfoId" });
             DropIndex("dbo.RolePermission", new[] { "PermissionId" });
             DropIndex("dbo.RolePermission", new[] { "RoleId" });
             DropIndex("dbo.Pickup", new[] { "DataDictionaryInfoId" });
@@ -276,9 +342,14 @@ namespace Test.EntityFramework.Migrations
             DropIndex("dbo.UserStorageBin", new[] { "UserId" });
             DropIndex("dbo.StorageBin", new[] { "StorageAreaId" });
             DropIndex("dbo.Material", new[] { "StorageBinId" });
+            DropIndex("dbo.Material", new[] { "DataDictionaryInfoId" });
             DropIndex("dbo.Material", new[] { "SupplierId" });
+            DropIndex("dbo.MaterialList", new[] { "DataDictionaryInfoId" });
+            DropIndex("dbo.MaterialList", new[] { "BatchId" });
+            DropIndex("dbo.MaterialList", new[] { "MaterialId" });
             DropIndex("dbo.DataDictionaryInfo", new[] { "DataDictionaryId" });
             DropTable("dbo.UserRole");
+            DropTable("dbo.Tag");
             DropTable("dbo.RolePermission");
             DropTable("dbo.Role");
             DropTable("dbo.Pickup");
@@ -290,8 +361,10 @@ namespace Test.EntityFramework.Migrations
             DropTable("dbo.StorageArea");
             DropTable("dbo.StorageBin");
             DropTable("dbo.Material");
+            DropTable("dbo.MaterialList");
             DropTable("dbo.DataDictionary");
             DropTable("dbo.DataDictionaryInfo");
+            DropTable("dbo.Batch");
         }
     }
 }
