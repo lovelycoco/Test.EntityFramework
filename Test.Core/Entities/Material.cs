@@ -12,7 +12,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料编码
         /// </summary>
-        public virtual string MaterialCode { get; set; }
+        public virtual string MaterialNum { get; set; }
         /// <summary>
         /// 物料名称
         /// </summary>
@@ -24,11 +24,11 @@ namespace Test.Core.Entities
         /// <summary>
         /// 高储
         /// </summary>
-        public virtual int HighStorage { get; set; }
+        public virtual int Max { get; set; }
         /// <summary>
         /// 低储
         /// </summary>
-        public virtual int LowStorage { get; set; }
+        public virtual int Min { get; set; }
         /// <summary>
         /// 是否启用
         /// </summary>
@@ -61,8 +61,8 @@ namespace Test.Core.Entities
         public Material()
         {
             IsEnabled = true;
-            HighStorage = 0;
-            LowStorage = 0;
+            Max = 0;
+            Min = 0;
             PackageNum = 0;
             PriorityLevel = 0;
         }

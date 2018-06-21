@@ -24,10 +24,10 @@ namespace Test.EntityFramework.Migrations.SeedData
         private void CreatePickupType()
         {
             List<DataDictionaryInfo> dataDictionaryInfos = new List<DataDictionaryInfo>();
-            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryValue = 1, DictionaryDescription = "正常", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryValue = 2, DictionaryDescription = "紧急", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryValue = 3, DictionaryDescription = "塔奥", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryValue = 4, DictionaryDescription = "诚众", Operator = Guid.Empty };
+            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常", Operator = Guid.Empty };
+            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急", Operator = Guid.Empty };
+            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥", Operator = Guid.Empty };
+            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众", Operator = Guid.Empty };
             dataDictionaryInfos.Add(dataDictionaryInfo1);
             dataDictionaryInfos.Add(dataDictionaryInfo2);
             dataDictionaryInfos.Add(dataDictionaryInfo3);

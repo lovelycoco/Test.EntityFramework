@@ -16,10 +16,6 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string DictionaryCode { get; set; }
         /// <summary>
-        /// 字典值
-        /// </summary>
-        public virtual int DictionaryValue { get; set; }
-        /// <summary>
         /// 字典描述
         /// </summary>
         public virtual string DictionaryDescription { get; set; }

@@ -12,9 +12,13 @@ namespace Test.Core.Entities
     public class MaterialList : BaseEntityOfOperator
     {
         /// <summary>
-        /// 交货单号
+        /// 物料清单编号
         /// </summary>
-        public virtual string BillOrder { get; set; }
+        public virtual Guid BillOfMaterialId { get; set; }
+        /// <summary>
+        /// 物料清单
+        /// </summary>
+        public virtual BillofMaterial BillofMaterial { get; set; }
         /// <summary>
         /// 物料Id
         /// </summary>
@@ -38,7 +42,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料数量
         /// </summary>
-        public virtual int MaterialNum { get; set; }
+        public virtual int Quantity { get; set; }
         /// <summary>
         /// 字典信息Id
         /// </summary>
