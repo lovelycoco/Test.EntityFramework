@@ -12,7 +12,7 @@ namespace Test.Core.Entities
     public class DataDictionary : BaseEntityOfOperator
     {
         public virtual string DictionaryName { get; set; }
-        public virtual IList<DataDictionaryInfo> DataDictionaryInfos { get; private set; }
+        public virtual IList<DataDictionaryInfo> DataDictionaryInfos { get; set; }
         public DataDictionary()
         {
             DataDictionaryInfos = new List<DataDictionaryInfo>();

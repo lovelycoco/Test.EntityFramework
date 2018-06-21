@@ -8,6 +8,37 @@ namespace Test.EntityFramework.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.DataDictionaryInfo",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        DictionaryCode = c.String(nullable: false, maxLength: 50, unicode: false),
+                        DictionaryValue = c.Int(nullable: false),
+                        DictionaryDescription = c.String(nullable: false, maxLength: 255),
+                        DataDictionaryId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionary", t => t.DataDictionaryId)
+                .Index(t => t.DataDictionaryId);
+            
+            CreateTable(
+                "dbo.DataDictionary",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        DictionaryName = c.String(nullable: false, maxLength: 50),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Material",
                 c => new
                     {
@@ -159,13 +190,16 @@ namespace Test.EntityFramework.Migrations
                         PickupNo = c.String(nullable: false, maxLength: 50, unicode: false),
                         IsPrinted = c.Boolean(nullable: false),
                         PrintTime = c.DateTime(),
+                        DataDictionaryInfoId = c.Guid(nullable: false),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         PickupType = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.DataDictionaryInfoId, cascadeDelete: true)
+                .Index(t => t.DataDictionaryInfoId);
             
             CreateTable(
                 "dbo.Role",
@@ -222,6 +256,7 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.UserRole", "RoleId", "dbo.Role");
             DropForeignKey("dbo.RolePermission", "RoleId", "dbo.Role");
             DropForeignKey("dbo.RolePermission", "PermissionId", "dbo.Permission");
+            DropForeignKey("dbo.Pickup", "DataDictionaryInfoId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.PickupList", "PickingListId", "dbo.Pickup");
             DropForeignKey("dbo.PickupList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Material", "SupplierId", "dbo.Supplier");
@@ -229,10 +264,12 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.UserStorageBin", "StorageBinId", "dbo.StorageBin");
             DropForeignKey("dbo.UserStorageBin", "UserId", "dbo.User");
             DropForeignKey("dbo.StorageBin", "StorageAreaId", "dbo.StorageArea");
+            DropForeignKey("dbo.DataDictionaryInfo", "DataDictionaryId", "dbo.DataDictionary");
             DropIndex("dbo.UserRole", new[] { "RoleId" });
             DropIndex("dbo.UserRole", new[] { "UserId" });
             DropIndex("dbo.RolePermission", new[] { "PermissionId" });
             DropIndex("dbo.RolePermission", new[] { "RoleId" });
+            DropIndex("dbo.Pickup", new[] { "DataDictionaryInfoId" });
             DropIndex("dbo.PickupList", new[] { "PickingListId" });
             DropIndex("dbo.PickupList", new[] { "MaterialId" });
             DropIndex("dbo.UserStorageBin", new[] { "StorageBinId" });
@@ -240,6 +277,7 @@ namespace Test.EntityFramework.Migrations
             DropIndex("dbo.StorageBin", new[] { "StorageAreaId" });
             DropIndex("dbo.Material", new[] { "StorageBinId" });
             DropIndex("dbo.Material", new[] { "SupplierId" });
+            DropIndex("dbo.DataDictionaryInfo", new[] { "DataDictionaryId" });
             DropTable("dbo.UserRole");
             DropTable("dbo.RolePermission");
             DropTable("dbo.Role");
@@ -252,6 +290,8 @@ namespace Test.EntityFramework.Migrations
             DropTable("dbo.StorageArea");
             DropTable("dbo.StorageBin");
             DropTable("dbo.Material");
+            DropTable("dbo.DataDictionary");
+            DropTable("dbo.DataDictionaryInfo");
         }
     }
 }

@@ -27,11 +27,21 @@ namespace Test.Core.Entities
         /// 备货信息记录
         /// </summary>
         public virtual IList<PickupList> PickupLists { get; private set; }
+        /// <summary>
+        /// 备货类型Id
+        /// </summary>
+        public virtual Guid DataDictionaryInfoId { get; set; }
+        /// <summary>
+        /// 备货类型
+        /// </summary>
+        public virtual DataDictionaryInfo PickUpType { get; set; }
         public Pickup()
         {
             IsPrinted = false;
             PickupLists = new List<PickupList>();
         }
+
+
     }
 
     /// <summary>

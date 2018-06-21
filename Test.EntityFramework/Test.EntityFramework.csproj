@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\DataDictionaryInfoMap.cs" />
+    <Compile Include="Maps\DataDictionaryMap.cs" />
     <Compile Include="Maps\MaterialMap.cs" />
     <Compile Include="Maps\PermissionMap.cs" />
     <Compile Include="Maps\PickupListMap.cs" />
@@ -59,11 +61,13 @@
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806200608470_CreateEntity.cs" />
-    <Compile Include="Migrations\201806200608470_CreateEntity.Designer.cs">
-      <DependentUpon>201806200608470_CreateEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806210005090_CreateEntity.cs" />
+    <Compile Include="Migrations\201806210005090_CreateEntity.Designer.cs">
+      <DependentUpon>201806210005090_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
+    <Compile Include="Migrations\SeedData\InitialHostDbBuilder.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="TestDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,8 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806200608470_CreateEntity.resx">
-      <DependentUpon>201806200608470_CreateEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806210005090_CreateEntity.resx">
+      <DependentUpon>201806210005090_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
