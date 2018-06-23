@@ -16,7 +16,7 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
 
             Property(t => t.TagCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
-            Property(t => t.TagMemo).IsRequired().HasMaxLength(255);
+            Property(t => t.TagMemo).IsRequired().HasMaxLength(256);
 
         }
     }

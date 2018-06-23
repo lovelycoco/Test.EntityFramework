@@ -17,7 +17,7 @@ namespace Test.EntityFramework.Maps
 
             Property(t => t.PermissionName).IsRequired().HasMaxLength(50);
             Property(t => t.FeatureName).IsRequired().HasMaxLength(50);
-            Property(t => t.Description).IsOptional().HasMaxLength(255);
+            Property(t => t.Description).IsOptional().HasMaxLength(256);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Test.EntityFramework.Maps
 
             Property(t => t.AreaCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.AreaName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
-            Property(t => t.AreaDescription).IsOptional().HasMaxLength(255).IsConcurrencyToken();
+            Property(t => t.AreaDescription).IsOptional().HasMaxLength(256).IsConcurrencyToken();
             Property(t => t.IsEnabled).IsConcurrencyToken();
 
             HasMany(t => t.StorageBins).WithRequired(s => s.StorageArea).HasForeignKey(s => s.StorageAreaId).WillCascadeOnDelete(false);
