@@ -14,7 +14,7 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("MaterialList");
             HasKey(t => t.Id);
-            Property(t => t.BillOrder).IsRequired().HasColumnType("varchar").HasMaxLength(50);
+            //Property(t => t.).IsRequired().HasColumnType("varchar").HasMaxLength(50);
 
         }
 

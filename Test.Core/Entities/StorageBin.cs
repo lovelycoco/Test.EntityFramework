@@ -42,7 +42,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 责任用户
         /// </summary>
-        public virtual IList<UserStorageBin> UserStorageBins { get; set; }
+        public virtual ICollection<UserStorageBin> UserStorageBins { get;}
 
         public StorageBin()
         {

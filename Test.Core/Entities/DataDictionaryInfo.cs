@@ -27,5 +27,13 @@ namespace Test.Core.Entities
         /// 字典类型
         /// </summary>
         public virtual DataDictionary DataDictionary { get; set; }
+        /// <summary>
+        /// 物料信息
+        /// </summary>
+        public virtual ICollection<Material> Materials { get; }
+        public DataDictionaryInfo()
+        {
+            Materials = new List<Material>();
+        }
     }
 }

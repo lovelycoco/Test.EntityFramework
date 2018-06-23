@@ -56,7 +56,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料类型
         /// </summary>
-        public virtual DataDictionaryInfo MaterialType { get; set; }
+        public virtual DataDictionaryInfo  DataDictionaryInfo { get; set; }
 
         public Material()
         {

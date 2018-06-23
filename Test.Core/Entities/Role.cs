@@ -18,7 +18,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 角色权限关系
         /// </summary>
-        public virtual IList<RolePermission> RolePermissions { get; private set; }
+        public virtual ICollection<RolePermission> RolePermissions { get; }
         public Role()
         {
             RolePermissions = new List<RolePermission>();

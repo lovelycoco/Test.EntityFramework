@@ -24,16 +24,19 @@ namespace Test.EntityFramework.Migrations.SeedData
         private void CreatePickupType()
         {
             List<DataDictionaryInfo> dataDictionaryInfos = new List<DataDictionaryInfo>();
-            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥", Operator = Guid.Empty };
-            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众", Operator = Guid.Empty };
+
+            var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty });
+            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常", Operator = Guid.Empty, DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急", Operator = Guid.Empty, DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥", Operator = Guid.Empty, DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众", Operator = Guid.Empty, DataDictionary = dict };
             dataDictionaryInfos.Add(dataDictionaryInfo1);
             dataDictionaryInfos.Add(dataDictionaryInfo2);
             dataDictionaryInfos.Add(dataDictionaryInfo3);
             dataDictionaryInfos.Add(dataDictionaryInfo4);
+            var dictInfo = _context.Set<DataDictionaryInfo>().AddRange(dataDictionaryInfos);
 
-            var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty, DataDictionaryInfos = dataDictionaryInfos });
+            //var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty, DataDictionaryInfos = dataDictionaryInfos });
 
 
 

@@ -18,7 +18,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 字典信息
         /// </summary>
-        public virtual IList<DataDictionaryInfo> DataDictionaryInfos { get; set; }
+        public virtual ICollection<DataDictionaryInfo> DataDictionaryInfos { get;  }
         public DataDictionary()
         {
             DataDictionaryInfos = new List<DataDictionaryInfo>();

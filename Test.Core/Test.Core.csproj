@@ -45,7 +45,7 @@
     <Compile Include="BaseEntityOfGuid.cs" />
     <Compile Include="BaseEntityOfOperator.cs" />
     <Compile Include="Entities\Batch.cs" />
-    <Compile Include="Entities\BillOrder.cs" />
+    <Compile Include="Entities\BillofMaterial.cs" />
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryInfo.cs" />
     <Compile Include="Entities\Material.cs" />

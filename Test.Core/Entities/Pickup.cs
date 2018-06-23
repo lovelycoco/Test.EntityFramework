@@ -26,7 +26,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货信息记录
         /// </summary>
-        public virtual IList<PickupList> PickupLists { get; private set; }
+        public virtual ICollection<PickupList> PickupLists { get; private set; }
         /// <summary>
         /// 备货类型Id
         /// </summary>

@@ -19,7 +19,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料集合
         /// </summary>
-        public virtual IList<Material> Materials { get; set; }
+        public virtual ICollection<Material> Materials { get;}
         public Supplier()
         {
             Materials = new List<Material>();

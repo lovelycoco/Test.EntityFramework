@@ -64,9 +64,9 @@
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806210657550_CreateEntity.cs" />
-    <Compile Include="Migrations\201806210657550_CreateEntity.Designer.cs">
-      <DependentUpon>201806210657550_CreateEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806231009081_CreateEntity.cs" />
+    <Compile Include="Migrations\201806231009081_CreateEntity.Designer.cs">
+      <DependentUpon>201806231009081_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
@@ -86,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806210657550_CreateEntity.resx">
-      <DependentUpon>201806210657550_CreateEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806231009081_CreateEntity.resx">
+      <DependentUpon>201806231009081_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

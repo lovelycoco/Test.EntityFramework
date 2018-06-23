@@ -30,7 +30,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 库位集合
         /// </summary>
-        public virtual IList<StorageBin> StorageBins { get; set; }
+        public virtual ICollection<StorageBin> StorageBins { get; }
         public StorageArea()
         {
             IsEnabled = true;
