@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 备货单
     /// </summary>
-    public abstract class Pickup : BaseEntityOfOperator
+    public  class Pickup : BaseEntityOfOperator
     {
         /// <summary>
         /// 备货单号
@@ -30,11 +30,31 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货类型Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid TypeId { get; set; }
         /// <summary>
         /// 备货类型
         /// </summary>
         public virtual DataDictionaryInfo PickUpType { get; set; }
+        /// <summary>
+        /// 备货状态Id
+        /// </summary>
+        public virtual Guid StatusId { get; set; }
+        /// <summary>
+        /// 备货状态
+        /// </summary>
+        public virtual DataDictionaryInfo PickupStatus { get; set; }
+        /// <summary>
+        /// 备货区域Id
+        /// </summary>
+        public virtual Guid AreaId { get; set; }
+        /// <summary>
+        /// 备货区域类型
+        /// </summary>
+        public virtual DataDictionaryInfo AreaType { get; set; }
+        /// <summary>
+        /// 看板单
+        /// </summary>
+        public virtual Note Note { get; set; }
         public Pickup()
         {
             IsPrinted = false;
@@ -44,20 +64,20 @@ namespace Test.Core.Entities
 
     }
 
-    /// <summary>
-    /// 仓储备货
-    /// </summary>
-    public class StorageAreaPickup : Pickup
-    {
+    ///// <summary>
+    ///// 仓储备货
+    ///// </summary>
+    //public class StorageAreaPickup : Pickup
+    //{
 
-    }
-    /// <summary>
-    /// 分拣区备货
-    /// </summary>
-    public class PickingAreaPickup : Pickup
-    {
+    //}
+    ///// <summary>
+    ///// 分拣区备货
+    ///// </summary>
+    //public class PickingAreaPickup : Pickup
+    //{
 
-    }
+    //}
 
 
 

@@ -12,7 +12,7 @@ namespace Test.Core.Entities
     public class MaterialList : BaseEntityOfOperator
     {
         /// <summary>
-        /// 物料清单编号
+        /// 物料清单Id
         /// </summary>
         public virtual Guid BillOfMaterialId { get; set; }
         /// <summary>
@@ -51,9 +51,18 @@ namespace Test.Core.Entities
         /// 物料状态
         /// </summary>
         public virtual DataDictionaryInfo MaterialStatus { get; set; }
+        /// <summary>
+        /// 标签信息
+        /// </summary>
+        public virtual Tag Tag { get; set; }
+        /// <summary>
+        /// 追溯信息
+        /// </summary>
+        public virtual ICollection<Trace> Traces { get; }
         public MaterialList()
         {
             ArrivalDate = DateTime.Now;
+            Traces = new List<Trace>();
         }
     }
 }

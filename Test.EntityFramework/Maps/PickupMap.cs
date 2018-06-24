@@ -18,8 +18,11 @@ namespace Test.EntityFramework.Maps
             Property(t => t.PickupNo).IsRequired().HasColumnType("varchar").HasMaxLength(50);
 
             HasMany(t => t.PickupLists).WithRequired(p => p.PickingList).HasForeignKey(p => p.PickingListId).WillCascadeOnDelete(false);
-            HasRequired(t => t.PickUpType).WithMany(d => d.Pickups).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
-            Map<StorageAreaPickup>(e => e.Requires("PickupType").HasValue(1)).Map<PickingAreaPickup>(r => r.Requires("PickupType").HasValue(2));
+            HasRequired(t => t.PickUpType).WithMany(d => d.PickupTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.PickupStatus).WithMany(d => d.PickupStatuses).HasForeignKey(t => t.StatusId).WillCascadeOnDelete(false);
+            HasRequired(t => t.AreaType).WithMany(d => d.PickupAreaTypes).HasForeignKey(t => t.AreaId).WillCascadeOnDelete(false);
+
+            //Map<StorageAreaPickup>(e => e.Requires("AreaType").HasValue(1)).Map<PickingAreaPickup>(r => r.Requires("AreaType").HasValue(2));
         }
     }
 }

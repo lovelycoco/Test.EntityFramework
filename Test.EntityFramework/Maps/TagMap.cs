@@ -20,6 +20,7 @@ namespace Test.EntityFramework.Maps
             Property(t => t.IsEnabled).IsConcurrencyToken();
 
             HasRequired(t => t.TagType).WithMany(d => d.Tags).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+
         }
     }
 }

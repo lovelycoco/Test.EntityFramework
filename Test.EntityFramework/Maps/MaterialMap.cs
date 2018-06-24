@@ -24,9 +24,12 @@ namespace Test.EntityFramework.Maps
 
             //HasOptional(t => t.MaterialType).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("DataDictionaryInfoId"));
 
-            HasRequired(t => t.DataDictionaryInfo).WithMany(d => d.Materials).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasRequired(t => t.MaterialType).WithMany(d => d.Materials).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
             HasMany(t => t.MaterialLists).WithRequired(m => m.Material).HasForeignKey(m => m.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.PickupLists).WithRequired(p => p.Material).HasForeignKey(p => p.MaterialId).WillCascadeOnDelete(false);
+            HasMany(t => t.NoteLists).WithRequired(n => n.Material).HasForeignKey(n => n.MaterialId).WillCascadeOnDelete(false);
+            HasMany(t => t.TemplateLists).WithRequired(t => t.Material).HasForeignKey(t => t.MaterialId).WillCascadeOnDelete(false);
+
         }
     }
 }

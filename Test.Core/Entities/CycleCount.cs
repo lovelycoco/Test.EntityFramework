@@ -18,7 +18,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 盘库类型
         /// </summary>
-        public virtual DataDictionaryInfo DataDictionaryInfo { get; set; }
+        public virtual DataDictionaryInfo CountType { get; set; }
         /// <summary>
         /// 库位Id
         /// </summary>

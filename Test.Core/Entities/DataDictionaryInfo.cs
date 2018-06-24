@@ -42,15 +42,43 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货类型
         /// </summary>
-        public virtual ICollection<Pickup> Pickups { get; }
+        public virtual ICollection<Pickup> PickupTypes { get; }
+        /// <summary>
+        /// 备货状态
+        /// </summary>
+        public virtual ICollection<Pickup> PickupStatuses { get; set; }
+        /// <summary>
+        /// 备货区域类型
+        /// </summary>
+        public virtual ICollection<Pickup> PickupAreaTypes { get; set; }
+        /// <summary>
+        /// 标签类型
+        /// </summary>
         public virtual ICollection<Tag> Tags { get; }
+        /// <summary>
+        /// 看板单状态
+        /// </summary>
+        public virtual ICollection<Note> Notes { get; }
+        /// <summary>
+        /// 模板类型
+        /// </summary>
+        public virtual ICollection<PickupTemplate> PickupTemplates { get; }
+        /// <summary>
+        /// 追溯状态
+        /// </summary>
+        public virtual ICollection<Trace> Traces { get; }
         public DataDictionaryInfo()
         {
             Materials = new List<Material>();
             MaterialLists = new List<MaterialList>();
             CycleCounts = new List<CycleCount>();
-            Pickups = new List<Pickup>();
+            PickupTypes = new List<Pickup>();
+            PickupStatuses = new List<Pickup>();
+            PickupAreaTypes = new List<Pickup>();
             Tags = new List<Tag>();
+            Notes = new List<Note>();
+            PickupTemplates = new List<PickupTemplate>();
+            Traces = new List<Trace>();
         }
     }
 }

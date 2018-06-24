@@ -32,6 +32,10 @@ namespace Test.Core.Entities
         /// 备注
         /// </summary>
         public virtual string TagMemo { get; set; }
+        /// <summary>
+        /// 物料记录
+        /// </summary>
+        public virtual MaterialList MaterialList { get; set; }
     }
 
 }

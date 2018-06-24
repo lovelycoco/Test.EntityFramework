@@ -56,7 +56,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料类型
         /// </summary>
-        public virtual DataDictionaryInfo DataDictionaryInfo { get; set; }
+        public virtual DataDictionaryInfo MaterialType { get; set; }
         /// <summary>
         /// 单价
         /// </summary>
@@ -69,6 +69,14 @@ namespace Test.Core.Entities
         /// 备货记录表
         /// </summary>
         public virtual ICollection<PickupList> PickupLists { get; }
+        /// <summary>
+        /// 看板记录
+        /// </summary>
+        public virtual ICollection<NoteList> NoteLists { get; }
+        /// <summary>
+        /// 模板记录
+        /// </summary>
+        public virtual ICollection<TemplateList> TemplateLists { get; }
 
         public Material()
         {
@@ -79,6 +87,8 @@ namespace Test.Core.Entities
             PriorityLevel = 0;
             MaterialLists = new List<MaterialList>();
             PickupLists = new List<PickupList>();
+            NoteLists = new List<NoteList>();
+            TemplateLists = new List<TemplateList>();
         }
 
     }

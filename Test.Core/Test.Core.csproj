@@ -51,12 +51,17 @@
     <Compile Include="Entities\DataDictionaryInfo.cs" />
     <Compile Include="Entities\Material.cs" />
     <Compile Include="Entities\MaterialList.cs" />
+    <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\NoteList.cs" />
+    <Compile Include="Entities\OperatorLog.cs" />
+    <Compile Include="Entities\PickupTemplate.cs" />
     <Compile Include="Entities\PickupList.cs" />
     <Compile Include="Entities\Pickup.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\TemplateList.cs" />
     <Compile Include="Entities\Test\Course.cs" />
     <Compile Include="Entities\Test\English.cs" />
     <Compile Include="Entities\Test\Math.cs" />
@@ -64,6 +69,7 @@
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\RolePermission.cs" />
     <Compile Include="Entities\Test\Student.cs" />
+    <Compile Include="Entities\Trace.cs" />
     <Compile Include="Entities\UnitPrice.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />

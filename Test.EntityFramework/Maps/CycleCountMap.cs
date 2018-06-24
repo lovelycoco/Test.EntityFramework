@@ -19,7 +19,7 @@ namespace Test.EntityFramework.Maps
             Property(t => t.Memo).IsOptional().HasMaxLength(256).IsConcurrencyToken();
 
             HasRequired(t => t.StorageBin).WithMany(s => s.CycleCounts).HasForeignKey(t => t.StorageBinId).WillCascadeOnDelete(false);
-            HasRequired(t => t.DataDictionaryInfo).WithMany(d => d.CycleCounts).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasRequired(t => t.CountType).WithMany(d => d.CycleCounts).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
         }
 
     }

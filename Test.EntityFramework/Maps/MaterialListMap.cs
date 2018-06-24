@@ -17,6 +17,8 @@ namespace Test.EntityFramework.Maps
             //Property(t => t.).IsRequired().HasColumnType("varchar").HasMaxLength(50);
 
             HasRequired(t => t.MaterialStatus).WithMany(d => d.MaterialLists).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasMany(t => t.Traces).WithRequired(t => t.MaterialList).HasForeignKey(t => t.MaterialListId).WillCascadeOnDelete(false);
+            HasOptional(t => t.Tag).WithOptionalDependent(t => t.MaterialList).Map(x => x.MapKey("TagId")).WillCascadeOnDelete(false);
         }
 
     }
