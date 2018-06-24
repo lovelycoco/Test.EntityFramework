@@ -15,7 +15,7 @@ namespace Test.EntityFramework.Maps
             ToTable("DataDictionary");
             HasKey(t => t.Id);
 
-            Property(t => t.DictionaryName).IsRequired().HasMaxLength(50);
+            Property(t => t.DictionaryName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
             HasMany(t => t.DataDictionaryInfos).WithRequired(s => s.DataDictionary).HasForeignKey(k => k.DataDictionaryId).WillCascadeOnDelete(false);
         }
     }

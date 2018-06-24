@@ -42,12 +42,17 @@ namespace Test.Core.Entities
         /// <summary>
         /// 责任用户
         /// </summary>
-        public virtual ICollection<UserStorageBin> UserStorageBins { get;}
+        public virtual ICollection<UserStorageBin> UserStorageBins { get; }
+        /// <summary>
+        /// 盘点信息
+        /// </summary>
+        public virtual ICollection<CycleCount> CycleCounts { get; }
 
         public StorageBin()
         {
             IsEnabled = true;
             UserStorageBins = new List<UserStorageBin>();
+            CycleCounts = new List<CycleCount>();
         }
     }
     /// <summary>

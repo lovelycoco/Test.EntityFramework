@@ -15,8 +15,9 @@ namespace Test.EntityFramework.Maps
             ToTable("Role");
             HasKey(t=>t.Id);
 
-            Property(t=>t.RoleName).IsRequired().HasMaxLength(50);
-            HasMany(t => t.RolePermissions).WithRequired(r => r.Role).HasForeignKey(k => k.RoleId);
+            Property(t=>t.RoleName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            HasMany(t => t.RolePermissions).WithRequired(r => r.Role).HasForeignKey(k => k.RoleId).WillCascadeOnDelete(false);
+            HasMany(t => t.UserRoles).WithRequired(u => u.Role).HasForeignKey(k => k.RoleId).WillCascadeOnDelete(false);
         }
     }
 }

@@ -8,16 +8,18 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class PermissionMap:EntityTypeConfiguration<Permission>
+    public class PermissionMap : EntityTypeConfiguration<Permission>
     {
         public PermissionMap()
         {
             ToTable("Permission");
-            HasKey(t=>t.Id);
+            HasKey(t => t.Id);
 
-            Property(t => t.PermissionName).IsRequired().HasMaxLength(50);
-            Property(t => t.FeatureName).IsRequired().HasMaxLength(50);
-            Property(t => t.Description).IsOptional().HasMaxLength(256);
+            Property(t => t.PermissionName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.FeatureName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.Description).IsOptional().HasMaxLength(256).IsConcurrencyToken();
+
+            HasMany(t => t.RolePermissions).WithRequired(r => r.Permission).HasForeignKey(r => r.PermissionId).WillCascadeOnDelete(false);
         }
     }
 }

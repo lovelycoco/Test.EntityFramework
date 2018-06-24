@@ -23,10 +23,11 @@ namespace Test.Core.Entities
         /// 描述
         /// </summary>
         public virtual string Description { get; set; }
+        public virtual ICollection<RolePermission> RolePermissions { get; }
 
         public Permission()
         {
-            
+            RolePermissions = new List<RolePermission>();
         }
     }
 }

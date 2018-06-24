@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Test.Core.Entities.Test;
 
 namespace Test.Core.Entities
 {
@@ -19,9 +20,11 @@ namespace Test.Core.Entities
         /// 角色权限关系
         /// </summary>
         public virtual ICollection<RolePermission> RolePermissions { get; }
+        public virtual ICollection<UserRole> UserRoles { get; }
         public Role()
         {
             RolePermissions = new List<RolePermission>();
+            UserRoles = new List<UserRole>();
         }
     }
 }

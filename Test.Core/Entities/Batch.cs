@@ -14,7 +14,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 批次编号
         /// </summary>
-        public virtual string BatchNum { get; set; }
+        public virtual string BatchNo { get; set; }
         /// <summary>
         /// 生产日期
         /// </summary>
@@ -26,11 +26,16 @@ namespace Test.Core.Entities
         /// <summary>
         /// 封存时间
         /// </summary>
-        public virtual DateTime? BlockedTime { get; set; }
+        public virtual DateTime? BlockedDate { get; set; }
+        /// <summary>
+        /// 物料记录
+        /// </summary>
+        public virtual ICollection<MaterialList> MaterialLists { get; }
 
         public Batch()
         {
             IsBlocked = false;
+            MaterialLists = new List<MaterialList>();
         }
     }
 }

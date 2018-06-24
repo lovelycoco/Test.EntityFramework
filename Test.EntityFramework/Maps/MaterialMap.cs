@@ -15,16 +15,18 @@ namespace Test.EntityFramework.Maps
             ToTable("Material");
             HasKey(t => t.Id);
 
-            Property(t => t.MaterialNum).IsRequired().HasColumnType("varchar").HasMaxLength(50);
-            Property(t => t.MaterialName).IsRequired().HasMaxLength(50);
-
+            Property(t => t.MaterialNo).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.MaterialName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.IsEnabled).IsConcurrencyToken();
             HasRequired(t => t.Supplier).WithMany(s => s.Materials).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
 
-            HasOptional(x => x.StorageBin).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("StorageBinId"));
+            HasOptional(x => x.StorageBin).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("StorageBinId")).WillCascadeOnDelete(false);
 
             //HasOptional(t => t.MaterialType).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("DataDictionaryInfoId"));
 
             HasRequired(t => t.DataDictionaryInfo).WithMany(d => d.Materials).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasMany(t => t.MaterialLists).WithRequired(m => m.Material).HasForeignKey(m => m.MaterialId).WillCascadeOnDelete(false);
+            HasMany(t => t.PickupLists).WithRequired(p => p.Material).HasForeignKey(p => p.MaterialId).WillCascadeOnDelete(false);
         }
     }
 }

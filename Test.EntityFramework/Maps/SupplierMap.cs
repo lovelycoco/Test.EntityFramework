@@ -14,8 +14,8 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("Supplier");
             HasKey(t => t.Id);
-            Property(t => t.SupplierName).IsRequired().HasMaxLength(50);
-            Property(t => t.SupplierCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
+            Property(t => t.SupplierName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.SupplierCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
 
            
         }

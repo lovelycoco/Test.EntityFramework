@@ -22,7 +22,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 打印时间
         /// </summary>
-        public virtual DateTime? PrintTime { get; set; }
+        public virtual DateTime? PrintDate { get; set; }
         /// <summary>
         /// 备货信息记录
         /// </summary>

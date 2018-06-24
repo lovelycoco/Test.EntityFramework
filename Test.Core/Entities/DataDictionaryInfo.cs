@@ -28,12 +28,29 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual DataDictionary DataDictionary { get; set; }
         /// <summary>
-        /// 物料信息
+        /// 物料类型
         /// </summary>
         public virtual ICollection<Material> Materials { get; }
+        /// <summary>
+        /// 物料状态类型
+        /// </summary>
+        public virtual ICollection<MaterialList> MaterialLists { get; }
+        /// <summary>
+        /// 盘库类型
+        /// </summary>
+        public virtual ICollection<CycleCount> CycleCounts { get; }
+        /// <summary>
+        /// 备货类型
+        /// </summary>
+        public virtual ICollection<Pickup> Pickups { get; }
+        public virtual ICollection<Tag> Tags { get; }
         public DataDictionaryInfo()
         {
             Materials = new List<Material>();
+            MaterialLists = new List<MaterialList>();
+            CycleCounts = new List<CycleCount>();
+            Pickups = new List<Pickup>();
+            Tags = new List<Tag>();
         }
     }
 }

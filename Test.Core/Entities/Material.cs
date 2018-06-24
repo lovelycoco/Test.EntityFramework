@@ -12,7 +12,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料编码
         /// </summary>
-        public virtual string MaterialNum { get; set; }
+        public virtual string MaterialNo { get; set; }
         /// <summary>
         /// 物料名称
         /// </summary>
@@ -56,7 +56,19 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料类型
         /// </summary>
-        public virtual DataDictionaryInfo  DataDictionaryInfo { get; set; }
+        public virtual DataDictionaryInfo DataDictionaryInfo { get; set; }
+        /// <summary>
+        /// 单价
+        /// </summary>
+        public virtual UnitPrice UnitPrice { get; set; }
+        /// <summary>
+        /// 物料记录
+        /// </summary>
+        public virtual ICollection<MaterialList> MaterialLists { get; }
+        /// <summary>
+        /// 备货记录表
+        /// </summary>
+        public virtual ICollection<PickupList> PickupLists { get; }
 
         public Material()
         {
@@ -65,6 +77,8 @@ namespace Test.Core.Entities
             Min = 0;
             PackageNum = 0;
             PriorityLevel = 0;
+            MaterialLists = new List<MaterialList>();
+            PickupLists = new List<PickupList>();
         }
 
     }

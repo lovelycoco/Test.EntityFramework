@@ -15,8 +15,8 @@ namespace Test.EntityFramework.Maps
             ToTable("DataDictionaryInfo");
             HasKey(t => t.Id);
 
-            Property(t => t.DictionaryCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
-            Property(t => t.DictionaryDescription).IsRequired().HasMaxLength(256);
+            Property(t => t.DictionaryCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.DictionaryDescription).IsRequired().HasMaxLength(256).IsConcurrencyToken();
         }
     }
 }

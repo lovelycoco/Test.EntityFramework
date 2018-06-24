@@ -46,6 +46,7 @@
     <Compile Include="BaseEntityOfOperator.cs" />
     <Compile Include="Entities\Batch.cs" />
     <Compile Include="Entities\BillofMaterial.cs" />
+    <Compile Include="Entities\CycleCount.cs" />
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryInfo.cs" />
     <Compile Include="Entities\Material.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\RolePermission.cs" />
     <Compile Include="Entities\Test\Student.cs" />
+    <Compile Include="Entities\UnitPrice.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\UserStorageBin.cs" />

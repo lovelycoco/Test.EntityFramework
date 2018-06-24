@@ -15,9 +15,11 @@ namespace Test.EntityFramework.Maps
             ToTable("Tag");
             HasKey(t => t.Id);
 
-            Property(t => t.TagCode).IsRequired().HasColumnType("varchar").HasMaxLength(50);
-            Property(t => t.TagMemo).IsRequired().HasMaxLength(256);
+            Property(t => t.TagCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.TagMemo).IsRequired().HasMaxLength(256).IsConcurrencyToken();
+            Property(t => t.IsEnabled).IsConcurrencyToken();
 
+            HasRequired(t => t.TagType).WithMany(d => d.Tags).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
         }
     }
 }

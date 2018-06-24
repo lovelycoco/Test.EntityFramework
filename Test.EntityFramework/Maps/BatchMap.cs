@@ -14,8 +14,9 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("Batch");
             HasKey(t => t.Id);
-
-            //HasMany()
+            Property(t => t.BatchNo).IsRequired().HasColumnType("varchar").HasMaxLength(50);
+            Property(t => t.IsBlocked).IsConcurrencyToken();
+            HasMany(t => t.MaterialLists).WithRequired(b => b.Batch).HasForeignKey(b => b.BatchId).WillCascadeOnDelete(false);
         }
     }
 }
