@@ -67,7 +67,6 @@
     <Compile Include="Maps\StorageAreaMap.cs" />
     <Compile Include="Maps\StorageBinMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
-    <Compile Include="Maps\TagMap.cs" />
     <Compile Include="Maps\TemplateListMap.cs" />
     <Compile Include="Maps\TraceMap.cs" />
     <Compile Include="Maps\UnitPriceMap.cs" />

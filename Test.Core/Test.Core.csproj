@@ -62,7 +62,6 @@
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />
-    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\TemplateList.cs" />
     <Compile Include="Entities\Test\Course.cs" />
     <Compile Include="Entities\Test\English.cs" />
