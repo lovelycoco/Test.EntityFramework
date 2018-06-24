@@ -8,19 +8,19 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class TagMap : EntityTypeConfiguration<Tag>
-    {
-        public TagMap()
-        {
-            ToTable("Tag");
-            HasKey(t => t.Id);
+    //public class TagMap : EntityTypeConfiguration<Tag>
+    //{
+    //    public TagMap()
+    //    {
+    //        ToTable("Tag");
+    //        HasKey(t => t.Id);
 
-            Property(t => t.TagCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
-            Property(t => t.TagMemo).IsRequired().HasMaxLength(256).IsConcurrencyToken();
-            Property(t => t.IsEnabled).IsConcurrencyToken();
+    //        Property(t => t.TagCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
+    //        Property(t => t.TagMemo).IsRequired().HasMaxLength(256).IsConcurrencyToken();
+    //        Property(t => t.IsEnabled).IsConcurrencyToken();
 
-            HasRequired(t => t.TagType).WithMany(d => d.Tags).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+    //        HasRequired(t => t.TagType).WithMany(d => d.Tags).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
 
-        }
-    }
+    //    }
+    //}
 }

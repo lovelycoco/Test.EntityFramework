@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
+    /// <summary>
+    /// 物料信息
+    /// </summary>
     public class Material : BaseEntityOfOperator
     {
         /// <summary>
@@ -77,6 +80,11 @@ namespace Test.Core.Entities
         /// 模板记录
         /// </summary>
         public virtual ICollection<TemplateList> TemplateLists { get; }
+        /// <summary>
+        /// 预入库
+        /// </summary>
+        public virtual PreEntry PreEntry { get; set; }
+
 
         public Material()
         {

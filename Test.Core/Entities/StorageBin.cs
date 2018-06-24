@@ -47,12 +47,17 @@ namespace Test.Core.Entities
         /// 盘点信息
         /// </summary>
         public virtual ICollection<CycleCount> CycleCounts { get; }
+        /// <summary>
+        /// 库位标签
+        /// </summary>
+        public virtual string Tag { get; private set; }
 
         public StorageBin()
         {
             IsEnabled = true;
             UserStorageBins = new List<UserStorageBin>();
             CycleCounts = new List<CycleCount>();
+            Tag = Guid.NewGuid().ToString().Replace("-", "");
         }
     }
     /// <summary>

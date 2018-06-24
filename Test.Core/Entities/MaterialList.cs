@@ -54,11 +54,15 @@ namespace Test.Core.Entities
         /// <summary>
         /// 标签信息
         /// </summary>
-        public virtual Tag Tag { get; set; }
+        //public virtual Tag Tag { get; set; }
         /// <summary>
         /// 追溯信息
         /// </summary>
         public virtual ICollection<Trace> Traces { get; }
+        /// <summary>
+        /// 器具
+        /// </summary>
+        public virtual Box Box { get; set; }
         public MaterialList()
         {
             ArrivalDate = DateTime.Now;

@@ -54,7 +54,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 标签类型
         /// </summary>
-        public virtual ICollection<Tag> Tags { get; }
+        //public virtual ICollection<Tag> Tags { get; }
         /// <summary>
         /// 看板单状态
         /// </summary>
@@ -67,6 +67,10 @@ namespace Test.Core.Entities
         /// 追溯状态
         /// </summary>
         public virtual ICollection<Trace> Traces { get; }
+        /// <summary>
+        /// 器具类型
+        /// </summary>
+        public virtual ICollection<Box> Boxes { get; }
         public DataDictionaryInfo()
         {
             Materials = new List<Material>();
@@ -75,10 +79,11 @@ namespace Test.Core.Entities
             PickupTypes = new List<Pickup>();
             PickupStatuses = new List<Pickup>();
             PickupAreaTypes = new List<Pickup>();
-            Tags = new List<Tag>();
+            //Tags = new List<Tag>();
             Notes = new List<Note>();
             PickupTemplates = new List<PickupTemplate>();
             Traces = new List<Trace>();
+            Boxes = new List<Box>();
         }
     }
 }

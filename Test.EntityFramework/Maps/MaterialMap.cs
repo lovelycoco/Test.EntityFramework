@@ -17,12 +17,13 @@ namespace Test.EntityFramework.Maps
 
             Property(t => t.MaterialNo).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.MaterialName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            
             Property(t => t.IsEnabled).IsConcurrencyToken();
             HasRequired(t => t.Supplier).WithMany(s => s.Materials).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
 
-            HasOptional(x => x.StorageBin).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("StorageBinId")).WillCascadeOnDelete(false);
+            HasOptional(x => x.StorageBin).WithOptionalDependent(m => m.Material).Map(x => x.MapKey("StorageBinId")).WillCascadeOnDelete(false);
 
-            //HasOptional(t => t.MaterialType).WithOptionalDependent(s => s.Material).Map(x => x.MapKey("DataDictionaryInfoId"));
+            HasOptional(t => t.PreEntry).WithOptionalPrincipal(m => m.Material).Map(x => x.MapKey("MaterialId")).WillCascadeOnDelete(false);
 
             HasRequired(t => t.MaterialType).WithMany(d => d.Materials).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
             HasMany(t => t.MaterialLists).WithRequired(m => m.Material).HasForeignKey(m => m.MaterialId).WillCascadeOnDelete(false);

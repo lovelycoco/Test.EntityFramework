@@ -46,6 +46,7 @@
     <Compile Include="BaseEntityOfOperator.cs" />
     <Compile Include="Entities\Batch.cs" />
     <Compile Include="Entities\BillofMaterial.cs" />
+    <Compile Include="Entities\Box.cs" />
     <Compile Include="Entities\CycleCount.cs" />
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryInfo.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Entities\PickupTemplate.cs" />
     <Compile Include="Entities\PickupList.cs" />
     <Compile Include="Entities\Pickup.cs" />
+    <Compile Include="Entities\PreEntry.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />

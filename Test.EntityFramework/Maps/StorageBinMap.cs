@@ -18,6 +18,7 @@ namespace Test.EntityFramework.Maps
             Property(t => t.BinCode).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.BinName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.IsEnabled).IsConcurrencyToken();
+            Property(t => t.Tag).IsRequired().HasMaxLength(50).IsConcurrencyToken();
             HasMany(t => t.UserStorageBins).WithRequired(s => s.StorageBin).HasForeignKey(k => k.StorageBinId).WillCascadeOnDelete(false);
             
             Map<EntityStorageBin>(e => e.Requires("BinType").HasValue(1)).Map<VirtualStorageBin>(r => r.Requires("BinType").HasValue(2));
