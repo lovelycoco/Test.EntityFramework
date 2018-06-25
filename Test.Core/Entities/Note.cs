@@ -16,13 +16,21 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string NoteNo { get; set; }
         /// <summary>
-        /// 字典信息Id
+        /// 看板单类型Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid TypeId { get; set; }
+        /// <summary>
+        /// 看板单类型
+        /// </summary>
+        public virtual DataDictionaryInfo NoteType { get; set; }
+        /// <summary>
+        /// 看板单状态Id
+        /// </summary>
+        public virtual Guid StatusId { get; set; }
         /// <summary>
         /// 看板单状态
         /// </summary>
-        public virtual DataDictionaryInfo NoteType { get; set; }
+        public virtual DataDictionaryInfo NoteStatus { get; set; }
         /// <summary>
         /// 看板单记录
         /// </summary>

@@ -17,7 +17,7 @@ namespace Test.EntityFramework.Maps
 
             Property(t => t.TemplateName).IsRequired().HasMaxLength(256).IsConcurrencyToken();
             HasMany(t => t.TemplateLists).WithRequired(p => p.PickupTemplate).HasForeignKey(p => p.TemplateId).WillCascadeOnDelete(false);
-            HasRequired(t => t.TemplateType).WithMany(d => d.PickupTemplates).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasRequired(t => t.TemplateType).WithMany(d => d.TemplateTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
         }
     }
 }

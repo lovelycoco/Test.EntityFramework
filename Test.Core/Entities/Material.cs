@@ -53,9 +53,9 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual StorageBin StorageBin { get; set; }
         /// <summary>
-        /// 字典信息Id
+        /// 物料类型Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid TypeId { get; set; }
         /// <summary>
         /// 物料类型
         /// </summary>

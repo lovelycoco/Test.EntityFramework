@@ -23,6 +23,9 @@ namespace Test.Core.Entities
         /// 描述
         /// </summary>
         public virtual string Description { get; set; }
+        /// <summary>
+        /// 角色权限关系
+        /// </summary>
         public virtual ICollection<RolePermission> RolePermissions { get; }
 
         public Permission()

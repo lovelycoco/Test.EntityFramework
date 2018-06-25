@@ -15,7 +15,7 @@ namespace Test.EntityFramework.Maps
             ToTable("Box");
             HasKey(t => t.Id);
             Property(t => t.BoxNo).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
-            HasRequired(t => t.BoxType).WithMany(d => d.Boxes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.BoxType).WithMany(d => d.BoxeTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
         }
     }
 }

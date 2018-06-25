@@ -20,6 +20,9 @@ namespace Test.Core.Entities
         /// 角色权限关系
         /// </summary>
         public virtual ICollection<RolePermission> RolePermissions { get; }
+        /// <summary>
+        /// 用户角色关系
+        /// </summary>
         public virtual ICollection<UserRole> UserRoles { get; }
         public Role()
         {

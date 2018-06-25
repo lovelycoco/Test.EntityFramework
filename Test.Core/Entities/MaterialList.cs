@@ -44,9 +44,9 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual int Quantity { get; set; }
         /// <summary>
-        /// 字典信息Id
+        /// 物料状态Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid StatusId { get; set; }
         /// <summary>
         /// 物料状态
         /// </summary>

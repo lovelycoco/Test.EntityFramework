@@ -20,9 +20,9 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual MaterialList MaterialList { get; set; }
         /// <summary>
-        /// 字典类型
+        /// 追溯状态Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid StatusId { get; set; }
         /// <summary>
         /// 追溯状态类型
         /// </summary>

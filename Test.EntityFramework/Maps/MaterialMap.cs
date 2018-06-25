@@ -25,7 +25,7 @@ namespace Test.EntityFramework.Maps
 
             HasOptional(t => t.PreEntry).WithOptionalPrincipal(m => m.Material).Map(x => x.MapKey("MaterialId")).WillCascadeOnDelete(false);
 
-            HasRequired(t => t.MaterialType).WithMany(d => d.Materials).HasForeignKey(t => t.DataDictionaryInfoId).WillCascadeOnDelete(false);
+            HasRequired(t => t.MaterialType).WithMany(d => d.MaterialTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
             HasMany(t => t.MaterialLists).WithRequired(m => m.Material).HasForeignKey(m => m.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.PickupLists).WithRequired(p => p.Material).HasForeignKey(p => p.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.NoteLists).WithRequired(n => n.Material).HasForeignKey(n => n.MaterialId).WillCascadeOnDelete(false);

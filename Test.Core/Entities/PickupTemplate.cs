@@ -16,9 +16,9 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string TemplateName { get; set; }
         /// <summary>
-        /// 字典信息Id
+        /// 模板类型Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid TypeId { get; set; }
         /// <summary>
         /// 模板类型
         /// </summary>

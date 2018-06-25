@@ -19,6 +19,9 @@ namespace Test.Core.Entities.Test
         /// 用户信息
         /// </summary>
         public virtual User User { get; set; }
+        /// <summary>
+        /// 角色Id
+        /// </summary>
         public virtual Guid RoleId { get; set; }
         /// <summary>
         /// 角色

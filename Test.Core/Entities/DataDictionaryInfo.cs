@@ -30,15 +30,15 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料类型
         /// </summary>
-        public virtual ICollection<Material> Materials { get; }
+        public virtual ICollection<Material> MaterialTypes { get; }
         /// <summary>
         /// 物料状态类型
         /// </summary>
-        public virtual ICollection<MaterialList> MaterialLists { get; }
+        public virtual ICollection<MaterialList> MaterialStatuses { get; }
         /// <summary>
         /// 盘库类型
         /// </summary>
-        public virtual ICollection<CycleCount> CycleCounts { get; }
+        public virtual ICollection<CycleCount> CountTypes { get; }
         /// <summary>
         /// 备货类型
         /// </summary>
@@ -56,34 +56,49 @@ namespace Test.Core.Entities
         /// </summary>
         //public virtual ICollection<Tag> Tags { get; }
         /// <summary>
+        /// 看板单类型
+        /// </summary>
+        public virtual ICollection<Note> NoteTypes { get; }
+        /// <summary>
         /// 看板单状态
         /// </summary>
-        public virtual ICollection<Note> Notes { get; }
+        public virtual ICollection<Note> NoteStatuses { get; set; }
         /// <summary>
         /// 模板类型
         /// </summary>
-        public virtual ICollection<PickupTemplate> PickupTemplates { get; }
+        public virtual ICollection<PickupTemplate> TemplateTypes { get; }
         /// <summary>
         /// 追溯状态
         /// </summary>
-        public virtual ICollection<Trace> Traces { get; }
+        public virtual ICollection<Trace> TraceStatuses { get; }
         /// <summary>
         /// 器具类型
         /// </summary>
-        public virtual ICollection<Box> Boxes { get; }
+        public virtual ICollection<Box> BoxeTypes { get; }
+        /// <summary>
+        /// 操作类型编码
+        /// </summary>
+        public virtual ICollection<OperatorLog> OperatorCodes { get; }
+        /// <summary>
+        /// 日志级别
+        /// </summary>
+        public virtual ICollection<OperatorLog> OperatorLogLevels { get; }
         public DataDictionaryInfo()
         {
-            Materials = new List<Material>();
-            MaterialLists = new List<MaterialList>();
-            CycleCounts = new List<CycleCount>();
+            MaterialTypes = new List<Material>();
+            MaterialStatuses = new List<MaterialList>();
+            CountTypes = new List<CycleCount>();
             PickupTypes = new List<Pickup>();
             PickupStatuses = new List<Pickup>();
             PickupAreaTypes = new List<Pickup>();
             //Tags = new List<Tag>();
-            Notes = new List<Note>();
-            PickupTemplates = new List<PickupTemplate>();
-            Traces = new List<Trace>();
-            Boxes = new List<Box>();
+            NoteTypes = new List<Note>();
+            NoteStatuses = new List<Note>();
+            TemplateTypes = new List<PickupTemplate>();
+            TraceStatuses = new List<Trace>();
+            BoxeTypes = new List<Box>();
+            OperatorCodes = new List<OperatorLog>();
+            OperatorLogLevels = new List<OperatorLog>();
         }
     }
 }

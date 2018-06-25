@@ -14,7 +14,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 盘库类型Id
         /// </summary>
-        public virtual Guid DataDictionaryInfoId { get; set; }
+        public virtual Guid TypeId { get; set; }
         /// <summary>
         /// 盘库类型
         /// </summary>
