@@ -57,6 +57,7 @@ namespace ConsoleApp
                 db.Database.Log = Console.WriteLine;
 
                 var dict = await db.Set<DataDictionary>().AsNoTracking().FirstOrDefaultAsync(t => t.DictionaryName == DbFunctions.AsNonUnicode("仓储备货类型"));
+                
                 StringBuilder sb = new StringBuilder();
                 foreach (var item in dict.DataDictionaryInfos)
                 {

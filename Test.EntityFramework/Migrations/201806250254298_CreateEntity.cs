@@ -8,19 +8,65 @@ namespace Test.EntityFramework.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Batch",
+                "dbo.BadGoodsList",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        BatchNo = c.String(nullable: false, maxLength: 50, unicode: false),
-                        ProductionDate = c.DateTime(),
-                        IsBlocked = c.Boolean(nullable: false),
-                        BlockedDate = c.DateTime(),
+                        MaterialId = c.Guid(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        RepairNo = c.String(maxLength: 100),
+                        Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.MaterialId);
+            
+            CreateTable(
+                "dbo.Material",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        MaterialNo = c.String(nullable: false, maxLength: 50, unicode: false),
+                        MaterialName = c.String(nullable: false, maxLength: 50),
+                        PackageQuantity = c.Int(nullable: false),
+                        Max = c.Int(nullable: false),
+                        Min = c.Int(nullable: false),
+                        IsEnabled = c.Boolean(nullable: false),
+                        PriorityLevel = c.Int(nullable: false),
+                        SupplierId = c.Guid(nullable: false),
+                        TypeId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        StorageBinId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
+                .ForeignKey("dbo.StorageBin", t => t.StorageBinId)
+                .ForeignKey("dbo.Supplier", t => t.SupplierId)
+                .Index(t => t.SupplierId)
+                .Index(t => t.TypeId)
+                .Index(t => t.StorageBinId);
+            
+            CreateTable(
+                "dbo.BadGoods",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TotalQuantity = c.Int(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        MaterialId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.MaterialId);
             
             CreateTable(
                 "dbo.MaterialList",
@@ -40,16 +86,31 @@ namespace Test.EntityFramework.Migrations
                         BoxId = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Batch", t => t.BatchId)
                 .ForeignKey("dbo.BillofMaterial", t => t.BillOfMaterialId)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
                 .ForeignKey("dbo.Box", t => t.BoxId)
                 .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
-                .ForeignKey("dbo.Batch", t => t.BatchId)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
                 .Index(t => t.BillOfMaterialId)
                 .Index(t => t.MaterialId)
                 .Index(t => t.BatchId)
                 .Index(t => t.StatusId)
                 .Index(t => t.BoxId);
+            
+            CreateTable(
+                "dbo.Batch",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        BatchNo = c.String(nullable: false, maxLength: 50, unicode: false),
+                        ProductionDate = c.DateTime(),
+                        IsBlocked = c.Boolean(nullable: false),
+                        BlockedDate = c.DateTime(),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.BillofMaterial",
@@ -145,196 +206,6 @@ namespace Test.EntityFramework.Migrations
                 .Index(t => t.StorageAreaId);
             
             CreateTable(
-                "dbo.Material",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        MaterialNo = c.String(nullable: false, maxLength: 50, unicode: false),
-                        MaterialName = c.String(nullable: false, maxLength: 50),
-                        PackageNum = c.Int(nullable: false),
-                        Max = c.Int(nullable: false),
-                        Min = c.Int(nullable: false),
-                        IsEnabled = c.Boolean(nullable: false),
-                        PriorityLevel = c.Int(nullable: false),
-                        SupplierId = c.Guid(nullable: false),
-                        TypeId = c.Guid(nullable: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        StorageBinId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
-                .ForeignKey("dbo.StorageBin", t => t.StorageBinId)
-                .ForeignKey("dbo.Supplier", t => t.SupplierId)
-                .Index(t => t.SupplierId)
-                .Index(t => t.TypeId)
-                .Index(t => t.StorageBinId);
-            
-            CreateTable(
-                "dbo.NoteList",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        NoteId = c.Guid(nullable: false),
-                        MaterialId = c.Guid(nullable: false),
-                        TotalQuantity = c.Int(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Note", t => t.NoteId)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.NoteId)
-                .Index(t => t.MaterialId);
-            
-            CreateTable(
-                "dbo.Note",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        NoteNo = c.String(nullable: false, maxLength: 50, unicode: false),
-                        TypeId = c.Guid(nullable: false),
-                        StatusId = c.Guid(nullable: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
-                .Index(t => t.TypeId)
-                .Index(t => t.StatusId);
-            
-            CreateTable(
-                "dbo.Pickup",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        PickupNo = c.String(nullable: false, maxLength: 50, unicode: false),
-                        IsPrinted = c.Boolean(nullable: false),
-                        PrintDate = c.DateTime(),
-                        TypeId = c.Guid(nullable: false),
-                        StatusId = c.Guid(nullable: false),
-                        AreaId = c.Guid(nullable: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        NodeId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.AreaId)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
-                .ForeignKey("dbo.Note", t => t.NodeId)
-                .Index(t => t.TypeId)
-                .Index(t => t.StatusId)
-                .Index(t => t.AreaId)
-                .Index(t => t.NodeId);
-            
-            CreateTable(
-                "dbo.PickupList",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        MaterialId = c.Guid(nullable: false),
-                        MaterialNum = c.Int(nullable: false),
-                        PickingListId = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pickup", t => t.PickingListId)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.MaterialId)
-                .Index(t => t.PickingListId);
-            
-            CreateTable(
-                "dbo.PreEntry",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        TotalQuantity = c.Int(nullable: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        MaterialId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.MaterialId);
-            
-            CreateTable(
-                "dbo.Supplier",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        SupplierName = c.String(nullable: false, maxLength: 50),
-                        SupplierCode = c.String(nullable: false, maxLength: 50, unicode: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.TemplateList",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        TemplateId = c.Guid(nullable: false),
-                        MaterialId = c.Guid(nullable: false),
-                        TotalQuantity = c.Int(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.PickupTemplate", t => t.TemplateId)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.TemplateId)
-                .Index(t => t.MaterialId);
-            
-            CreateTable(
-                "dbo.PickupTemplate",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        TemplateName = c.String(nullable: false, maxLength: 256),
-                        TypeId = c.Guid(nullable: false),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
-                .Index(t => t.TypeId);
-            
-            CreateTable(
-                "dbo.UnitPrice",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Amount = c.Decimal(nullable: false, precision: 18, scale: 4),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        MaterialId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.MaterialId);
-            
-            CreateTable(
                 "dbo.StorageArea",
                 c => new
                     {
@@ -373,10 +244,10 @@ namespace Test.EntityFramework.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                        NormalizedUserName = c.String(nullable: false, maxLength: 256),
+                        UserName = c.String(nullable: false, maxLength: 50),
+                        NormalizedUserName = c.String(nullable: false, maxLength: 50),
                         Email = c.String(maxLength: 256, unicode: false),
-                        Password = c.String(nullable: false, maxLength: 256, unicode: false),
+                        Password = c.String(nullable: false, maxLength: 100, unicode: false),
                         LastLoginTime = c.DateTime(),
                         LastLogoutTime = c.DateTime(),
                         Operator = c.Guid(nullable: false),
@@ -462,10 +333,93 @@ namespace Test.EntityFramework.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Note",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        NoteNo = c.String(nullable: false, maxLength: 50, unicode: false),
+                        TypeId = c.Guid(nullable: false),
+                        StatusId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
+                .Index(t => t.TypeId)
+                .Index(t => t.StatusId);
+            
+            CreateTable(
+                "dbo.NoteList",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        NoteId = c.Guid(nullable: false),
+                        MaterialId = c.Guid(nullable: false),
+                        TotalQuantity = c.Int(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Note", t => t.NoteId)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.NoteId)
+                .Index(t => t.MaterialId);
+            
+            CreateTable(
+                "dbo.Pickup",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        PickupNo = c.String(nullable: false, maxLength: 50, unicode: false),
+                        IsPrinted = c.Boolean(nullable: false),
+                        PrintDate = c.DateTime(),
+                        TypeId = c.Guid(nullable: false),
+                        StatusId = c.Guid(nullable: false),
+                        AreaId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        NodeId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.AreaId)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
+                .ForeignKey("dbo.Note", t => t.NodeId)
+                .Index(t => t.TypeId)
+                .Index(t => t.StatusId)
+                .Index(t => t.AreaId)
+                .Index(t => t.NodeId);
+            
+            CreateTable(
+                "dbo.PickupList",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        MaterialId = c.Guid(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        PickingListId = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pickup", t => t.PickingListId)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.MaterialId)
+                .Index(t => t.PickingListId);
+            
+            CreateTable(
                 "dbo.OperatorLog",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
+                        TypeId = c.Guid(nullable: false),
                         CodeId = c.Guid(nullable: false),
                         Operation = c.String(nullable: false, maxLength: 50),
                         LevelId = c.Guid(nullable: false),
@@ -476,10 +430,99 @@ namespace Test.EntityFramework.Migrations
                         IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
                 .ForeignKey("dbo.DataDictionaryInfo", t => t.LevelId)
                 .ForeignKey("dbo.DataDictionaryInfo", t => t.CodeId)
+                .Index(t => t.TypeId)
                 .Index(t => t.CodeId)
                 .Index(t => t.LevelId);
+            
+            CreateTable(
+                "dbo.SelfPickup",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        SelfPeople = c.String(nullable: false, maxLength: 10),
+                        SupplierId = c.Guid(nullable: false),
+                        IsPrinted = c.Boolean(nullable: false),
+                        PrintDate = c.DateTime(),
+                        TypeId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
+                .ForeignKey("dbo.Supplier", t => t.SupplierId)
+                .Index(t => t.SupplierId)
+                .Index(t => t.TypeId);
+            
+            CreateTable(
+                "dbo.SelfPickupList",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        SelfId = c.Guid(nullable: false),
+                        MaterialId = c.Guid(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.SelfPickup", t => t.SelfId)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.SelfId)
+                .Index(t => t.MaterialId);
+            
+            CreateTable(
+                "dbo.Supplier",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        SupplierName = c.String(nullable: false, maxLength: 50),
+                        SupplierCode = c.String(nullable: false, maxLength: 50, unicode: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.PickupTemplate",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TemplateName = c.String(nullable: false, maxLength: 256),
+                        TypeId = c.Guid(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.TypeId)
+                .Index(t => t.TypeId);
+            
+            CreateTable(
+                "dbo.TemplateList",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TemplateId = c.Guid(nullable: false),
+                        MaterialId = c.Guid(nullable: false),
+                        TotalQuantity = c.Int(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.PickupTemplate", t => t.TemplateId)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.TemplateId)
+                .Index(t => t.MaterialId);
             
             CreateTable(
                 "dbo.Trace",
@@ -501,18 +544,73 @@ namespace Test.EntityFramework.Migrations
                 .Index(t => t.MaterialListId)
                 .Index(t => t.TraceStatus_Id);
             
+            CreateTable(
+                "dbo.PreEntry",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TotalQuantity = c.Int(nullable: false),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        MaterialId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.MaterialId);
+            
+            CreateTable(
+                "dbo.UnitPrice",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 4),
+                        Operator = c.Guid(nullable: false),
+                        CreatedTime = c.DateTime(nullable: false),
+                        ModifiedTime = c.DateTime(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        MaterialId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Material", t => t.MaterialId)
+                .Index(t => t.MaterialId);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.MaterialList", "BatchId", "dbo.Batch");
+            DropForeignKey("dbo.UnitPrice", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.TemplateList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.Material", "SupplierId", "dbo.Supplier");
+            DropForeignKey("dbo.Material", "StorageBinId", "dbo.StorageBin");
+            DropForeignKey("dbo.SelfPickupList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.PreEntry", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.PickupList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.NoteList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.Material", "TypeId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.MaterialList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Trace", "MaterialListId", "dbo.MaterialList");
             DropForeignKey("dbo.MaterialList", "StatusId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.MaterialList", "BoxId", "dbo.Box");
             DropForeignKey("dbo.Box", "TypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.Trace", "TraceStatus_Id", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.PickupTemplate", "TypeId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.TemplateList", "TemplateId", "dbo.PickupTemplate");
+            DropForeignKey("dbo.SelfPickup", "SupplierId", "dbo.Supplier");
+            DropForeignKey("dbo.SelfPickupList", "SelfId", "dbo.SelfPickup");
+            DropForeignKey("dbo.SelfPickup", "TypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.OperatorLog", "CodeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.OperatorLog", "LevelId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.OperatorLog", "TypeId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.Pickup", "NodeId", "dbo.Note");
+            DropForeignKey("dbo.Pickup", "TypeId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.Pickup", "StatusId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.PickupList", "PickingListId", "dbo.Pickup");
+            DropForeignKey("dbo.Pickup", "AreaId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.Note", "TypeId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.Note", "StatusId", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.NoteList", "NoteId", "dbo.Note");
             DropForeignKey("dbo.DataDictionaryInfo", "DataDictionaryId", "dbo.DataDictionary");
             DropForeignKey("dbo.CycleCount", "StorageBinId", "dbo.StorageBin");
             DropForeignKey("dbo.UserStorageBin", "StorageBinId", "dbo.StorageBin");
@@ -522,55 +620,41 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.RolePermission", "RoleId", "dbo.Role");
             DropForeignKey("dbo.RolePermission", "PermissionId", "dbo.Permission");
             DropForeignKey("dbo.StorageBin", "StorageAreaId", "dbo.StorageArea");
-            DropForeignKey("dbo.UnitPrice", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.TemplateList", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.PickupTemplate", "TypeId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.TemplateList", "TemplateId", "dbo.PickupTemplate");
-            DropForeignKey("dbo.Material", "SupplierId", "dbo.Supplier");
-            DropForeignKey("dbo.Material", "StorageBinId", "dbo.StorageBin");
-            DropForeignKey("dbo.PreEntry", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.PickupList", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.NoteList", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.Pickup", "NodeId", "dbo.Note");
-            DropForeignKey("dbo.Pickup", "TypeId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.Pickup", "StatusId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.PickupList", "PickingListId", "dbo.Pickup");
-            DropForeignKey("dbo.Pickup", "AreaId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.Note", "TypeId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.Note", "StatusId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.NoteList", "NoteId", "dbo.Note");
-            DropForeignKey("dbo.Material", "TypeId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.MaterialList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.CycleCount", "TypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.MaterialList", "BillOfMaterialId", "dbo.BillofMaterial");
+            DropForeignKey("dbo.MaterialList", "BatchId", "dbo.Batch");
+            DropForeignKey("dbo.BadGoodsList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.BadGoods", "MaterialId", "dbo.Material");
+            DropIndex("dbo.UnitPrice", new[] { "MaterialId" });
+            DropIndex("dbo.PreEntry", new[] { "MaterialId" });
             DropIndex("dbo.Trace", new[] { "TraceStatus_Id" });
             DropIndex("dbo.Trace", new[] { "MaterialListId" });
-            DropIndex("dbo.OperatorLog", new[] { "LevelId" });
-            DropIndex("dbo.OperatorLog", new[] { "CodeId" });
-            DropIndex("dbo.RolePermission", new[] { "PermissionId" });
-            DropIndex("dbo.RolePermission", new[] { "RoleId" });
-            DropIndex("dbo.UserRole", new[] { "RoleId" });
-            DropIndex("dbo.UserRole", new[] { "UserId" });
-            DropIndex("dbo.UserStorageBin", new[] { "StorageBinId" });
-            DropIndex("dbo.UserStorageBin", new[] { "UserId" });
-            DropIndex("dbo.UnitPrice", new[] { "MaterialId" });
-            DropIndex("dbo.PickupTemplate", new[] { "TypeId" });
             DropIndex("dbo.TemplateList", new[] { "MaterialId" });
             DropIndex("dbo.TemplateList", new[] { "TemplateId" });
-            DropIndex("dbo.PreEntry", new[] { "MaterialId" });
+            DropIndex("dbo.PickupTemplate", new[] { "TypeId" });
+            DropIndex("dbo.SelfPickupList", new[] { "MaterialId" });
+            DropIndex("dbo.SelfPickupList", new[] { "SelfId" });
+            DropIndex("dbo.SelfPickup", new[] { "TypeId" });
+            DropIndex("dbo.SelfPickup", new[] { "SupplierId" });
+            DropIndex("dbo.OperatorLog", new[] { "LevelId" });
+            DropIndex("dbo.OperatorLog", new[] { "CodeId" });
+            DropIndex("dbo.OperatorLog", new[] { "TypeId" });
             DropIndex("dbo.PickupList", new[] { "PickingListId" });
             DropIndex("dbo.PickupList", new[] { "MaterialId" });
             DropIndex("dbo.Pickup", new[] { "NodeId" });
             DropIndex("dbo.Pickup", new[] { "AreaId" });
             DropIndex("dbo.Pickup", new[] { "StatusId" });
             DropIndex("dbo.Pickup", new[] { "TypeId" });
-            DropIndex("dbo.Note", new[] { "StatusId" });
-            DropIndex("dbo.Note", new[] { "TypeId" });
             DropIndex("dbo.NoteList", new[] { "MaterialId" });
             DropIndex("dbo.NoteList", new[] { "NoteId" });
-            DropIndex("dbo.Material", new[] { "StorageBinId" });
-            DropIndex("dbo.Material", new[] { "TypeId" });
-            DropIndex("dbo.Material", new[] { "SupplierId" });
+            DropIndex("dbo.Note", new[] { "StatusId" });
+            DropIndex("dbo.Note", new[] { "TypeId" });
+            DropIndex("dbo.RolePermission", new[] { "PermissionId" });
+            DropIndex("dbo.RolePermission", new[] { "RoleId" });
+            DropIndex("dbo.UserRole", new[] { "RoleId" });
+            DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.UserStorageBin", new[] { "StorageBinId" });
+            DropIndex("dbo.UserStorageBin", new[] { "UserId" });
             DropIndex("dbo.StorageBin", new[] { "StorageAreaId" });
             DropIndex("dbo.CycleCount", new[] { "StorageBinId" });
             DropIndex("dbo.CycleCount", new[] { "TypeId" });
@@ -581,8 +665,24 @@ namespace Test.EntityFramework.Migrations
             DropIndex("dbo.MaterialList", new[] { "BatchId" });
             DropIndex("dbo.MaterialList", new[] { "MaterialId" });
             DropIndex("dbo.MaterialList", new[] { "BillOfMaterialId" });
+            DropIndex("dbo.BadGoods", new[] { "MaterialId" });
+            DropIndex("dbo.Material", new[] { "StorageBinId" });
+            DropIndex("dbo.Material", new[] { "TypeId" });
+            DropIndex("dbo.Material", new[] { "SupplierId" });
+            DropIndex("dbo.BadGoodsList", new[] { "MaterialId" });
+            DropTable("dbo.UnitPrice");
+            DropTable("dbo.PreEntry");
             DropTable("dbo.Trace");
+            DropTable("dbo.TemplateList");
+            DropTable("dbo.PickupTemplate");
+            DropTable("dbo.Supplier");
+            DropTable("dbo.SelfPickupList");
+            DropTable("dbo.SelfPickup");
             DropTable("dbo.OperatorLog");
+            DropTable("dbo.PickupList");
+            DropTable("dbo.Pickup");
+            DropTable("dbo.NoteList");
+            DropTable("dbo.Note");
             DropTable("dbo.DataDictionary");
             DropTable("dbo.Permission");
             DropTable("dbo.RolePermission");
@@ -591,23 +691,16 @@ namespace Test.EntityFramework.Migrations
             DropTable("dbo.User");
             DropTable("dbo.UserStorageBin");
             DropTable("dbo.StorageArea");
-            DropTable("dbo.UnitPrice");
-            DropTable("dbo.PickupTemplate");
-            DropTable("dbo.TemplateList");
-            DropTable("dbo.Supplier");
-            DropTable("dbo.PreEntry");
-            DropTable("dbo.PickupList");
-            DropTable("dbo.Pickup");
-            DropTable("dbo.Note");
-            DropTable("dbo.NoteList");
-            DropTable("dbo.Material");
             DropTable("dbo.StorageBin");
             DropTable("dbo.CycleCount");
             DropTable("dbo.DataDictionaryInfo");
             DropTable("dbo.Box");
             DropTable("dbo.BillofMaterial");
-            DropTable("dbo.MaterialList");
             DropTable("dbo.Batch");
+            DropTable("dbo.MaterialList");
+            DropTable("dbo.BadGoods");
+            DropTable("dbo.Material");
+            DropTable("dbo.BadGoodsList");
         }
     }
 }

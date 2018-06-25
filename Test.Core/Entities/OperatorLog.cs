@@ -9,6 +9,14 @@ namespace Test.Core.Entities
     public class OperatorLog : BaseEntityOfOperator
     {
         /// <summary>
+        /// 业务类型Id
+        /// </summary>
+        public virtual Guid TypeId { get; set; }
+        /// <summary>
+        /// 业务类型
+        /// </summary>
+        public virtual DataDictionaryInfo BusinessType { get; set; }
+        /// <summary>
         /// 操作编码Id
         /// </summary>
         public virtual Guid CodeId { get; set; }

@@ -83,6 +83,14 @@ namespace Test.Core.Entities
         /// 日志级别
         /// </summary>
         public virtual ICollection<OperatorLog> OperatorLogLevels { get; }
+        /// <summary>
+        /// 日志业务类型
+        /// </summary>
+        public virtual ICollection<OperatorLog> OperatorBusinessTypes { get; }
+        /// <summary>
+        /// 自提来源类型
+        /// </summary>
+        public virtual ICollection<SelfPickup> OriginalTypes { get; }
         public DataDictionaryInfo()
         {
             MaterialTypes = new List<Material>();
@@ -99,6 +107,8 @@ namespace Test.Core.Entities
             BoxeTypes = new List<Box>();
             OperatorCodes = new List<OperatorLog>();
             OperatorLogLevels = new List<OperatorLog>();
+            OperatorBusinessTypes = new List<OperatorLog>();
+            OriginalTypes = new List<SelfPickup>();
         }
     }
 }

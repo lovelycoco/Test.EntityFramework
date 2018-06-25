@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\BadGoodsListMap.cs" />
+    <Compile Include="Maps\BadGoodsMap.cs" />
     <Compile Include="Maps\BatchMap.cs" />
     <Compile Include="Maps\BillofMaterialMap.cs" />
     <Compile Include="Maps\BoxMap.cs" />
@@ -65,6 +67,8 @@
     <Compile Include="Maps\PreEntryMap.cs" />
     <Compile Include="Maps\RoleMap.cs" />
     <Compile Include="Maps\RolePermissionMap.cs" />
+    <Compile Include="Maps\SelfPickupListMap.cs" />
+    <Compile Include="Maps\SelfPickupMap.cs" />
     <Compile Include="Maps\StorageAreaMap.cs" />
     <Compile Include="Maps\StorageBinMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
@@ -74,9 +78,9 @@
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806250034001_CreateEntity.cs" />
-    <Compile Include="Migrations\201806250034001_CreateEntity.Designer.cs">
-      <DependentUpon>201806250034001_CreateEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806250254298_CreateEntity.cs" />
+    <Compile Include="Migrations\201806250254298_CreateEntity.Designer.cs">
+      <DependentUpon>201806250254298_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
@@ -96,8 +100,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806250034001_CreateEntity.resx">
-      <DependentUpon>201806250034001_CreateEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806250254298_CreateEntity.resx">
+      <DependentUpon>201806250254298_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

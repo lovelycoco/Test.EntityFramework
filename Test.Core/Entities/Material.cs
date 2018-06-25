@@ -23,7 +23,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 收容数量
         /// </summary>
-        public virtual int PackageNum { get; set; }
+        public virtual int PackageQuantity { get; set; }
         /// <summary>
         /// 高储
         /// </summary>
@@ -84,19 +84,31 @@ namespace Test.Core.Entities
         /// 预入库
         /// </summary>
         public virtual PreEntry PreEntry { get; set; }
-
-
+        /// <summary>
+        /// 不良品
+        /// </summary>
+        public virtual BadGoods BadGoods { get; set; }
+        /// <summary>
+        /// 不良品记录
+        /// </summary>
+        public virtual ICollection<BadGoodsList> BadGoodsLists { get; }
+        /// <summary>
+        /// 自提记录
+        /// </summary>
+        public virtual ICollection<SelfPickupList> SelfPickupLists { get; }
         public Material()
         {
             IsEnabled = true;
             Max = 0;
             Min = 0;
-            PackageNum = 0;
+            PackageQuantity = 0;
             PriorityLevel = 0;
             MaterialLists = new List<MaterialList>();
             PickupLists = new List<PickupList>();
             NoteLists = new List<NoteList>();
             TemplateLists = new List<TemplateList>();
+            BadGoodsLists = new List<BadGoodsList>();
+            SelfPickupLists = new List<SelfPickupList>();
         }
 
     }

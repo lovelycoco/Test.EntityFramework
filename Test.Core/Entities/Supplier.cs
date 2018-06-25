@@ -19,10 +19,15 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料集合
         /// </summary>
-        public virtual ICollection<Material> Materials { get;}
+        public virtual ICollection<Material> Materials { get; }
+        /// <summary>
+        /// 自提单
+        /// </summary>
+        public virtual ICollection<SelfPickup> SelfPickups { get; }
         public Supplier()
         {
             Materials = new List<Material>();
+            SelfPickups = new List<SelfPickup>();
         }
     }
 }

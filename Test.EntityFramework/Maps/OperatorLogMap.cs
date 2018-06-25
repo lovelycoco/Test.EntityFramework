@@ -20,6 +20,7 @@ namespace Test.EntityFramework.Maps
 
             HasRequired(t => t.OperatorCode).WithMany(d => d.OperatorCodes).HasForeignKey(t => t.CodeId).WillCascadeOnDelete(false);
             HasRequired(t => t.LogLevel).WithMany(d => d.OperatorLogLevels).HasForeignKey(t => t.LevelId).WillCascadeOnDelete(false);
+            HasRequired(t => t.BusinessType).WithMany(d => d.OperatorBusinessTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
         }
     }
 }

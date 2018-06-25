@@ -44,6 +44,8 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="BaseEntityOfGuid.cs" />
     <Compile Include="BaseEntityOfOperator.cs" />
+    <Compile Include="Entities\BadGoods.cs" />
+    <Compile Include="Entities\BadGoodsList.cs" />
     <Compile Include="Entities\Batch.cs" />
     <Compile Include="Entities\BillofMaterial.cs" />
     <Compile Include="Entities\Box.cs" />
@@ -59,6 +61,8 @@
     <Compile Include="Entities\PickupList.cs" />
     <Compile Include="Entities\Pickup.cs" />
     <Compile Include="Entities\PreEntry.cs" />
+    <Compile Include="Entities\SelfPickup.cs" />
+    <Compile Include="Entities\SelfPickupList.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />
