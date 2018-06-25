@@ -536,13 +536,12 @@ namespace Test.EntityFramework.Migrations
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
-                        TraceStatus_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DataDictionaryInfo", t => t.TraceStatus_Id)
+                .ForeignKey("dbo.DataDictionaryInfo", t => t.StatusId)
                 .ForeignKey("dbo.MaterialList", t => t.MaterialListId)
                 .Index(t => t.MaterialListId)
-                .Index(t => t.TraceStatus_Id);
+                .Index(t => t.StatusId);
             
             CreateTable(
                 "dbo.PreEntry",
@@ -594,7 +593,7 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.MaterialList", "StatusId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.MaterialList", "BoxId", "dbo.Box");
             DropForeignKey("dbo.Box", "TypeId", "dbo.DataDictionaryInfo");
-            DropForeignKey("dbo.Trace", "TraceStatus_Id", "dbo.DataDictionaryInfo");
+            DropForeignKey("dbo.Trace", "StatusId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.PickupTemplate", "TypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.TemplateList", "TemplateId", "dbo.PickupTemplate");
             DropForeignKey("dbo.SelfPickup", "SupplierId", "dbo.Supplier");
@@ -627,7 +626,7 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.BadGoods", "MaterialId", "dbo.Material");
             DropIndex("dbo.UnitPrice", new[] { "MaterialId" });
             DropIndex("dbo.PreEntry", new[] { "MaterialId" });
-            DropIndex("dbo.Trace", new[] { "TraceStatus_Id" });
+            DropIndex("dbo.Trace", new[] { "StatusId" });
             DropIndex("dbo.Trace", new[] { "MaterialListId" });
             DropIndex("dbo.TemplateList", new[] { "MaterialId" });
             DropIndex("dbo.TemplateList", new[] { "TemplateId" });

@@ -16,6 +16,8 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
 
             Property(t => t.Memo).IsOptional().HasMaxLength(256).IsConcurrencyToken();
+
+            HasRequired(t => t.TraceStatus).WithMany(d => d.TraceStatuses).HasForeignKey(t => t.StatusId).WillCascadeOnDelete(false);
         }
     }
 }
