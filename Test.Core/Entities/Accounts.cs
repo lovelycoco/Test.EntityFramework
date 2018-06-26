@@ -48,6 +48,10 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual int VirtualQuantity { get; set; }
         /// <summary>
+        /// 封装数量
+        /// </summary>
+        public virtual int BlockedQuantity { get; set; }
+        /// <summary>
         /// 封账时间
         /// </summary>
         public virtual DateTime? BlockedDate { get; set; }
