@@ -17,6 +17,14 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string SupplierCode { get; set; }
         /// <summary>
+        /// 供应商描述
+        /// </summary>
+        public virtual string SupplierDescription { get; set; }
+        /// <summary>
+        /// 供应商地址
+        /// </summary>
+        public virtual string SupplierAddress { get; set; }
+        /// <summary>
         /// 物料集合
         /// </summary>
         public virtual ICollection<Material> Materials { get; }

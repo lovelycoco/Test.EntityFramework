@@ -78,19 +78,31 @@ namespace Test.Core.Entities
         /// <summary>
         /// 操作类型编码
         /// </summary>
-        public virtual ICollection<OperatorLog> OperatorCodes { get; }
+        public virtual ICollection<OperatorLog> OperationCodes { get; }
         /// <summary>
-        /// 日志级别
+        /// 操作日志告警级别
         /// </summary>
-        public virtual ICollection<OperatorLog> OperatorLogLevels { get; }
+        public virtual ICollection<OperatorLog> OperationLogLevels { get; }
         /// <summary>
-        /// 日志业务类型
+        /// 操作日志业务类型
         /// </summary>
-        public virtual ICollection<OperatorLog> OperatorBusinessTypes { get; }
+        public virtual ICollection<OperatorLog> OperationBusinessTypes { get; }
         /// <summary>
         /// 自提来源类型
         /// </summary>
         public virtual ICollection<SelfPickup> OriginalTypes { get; }
+        /// <summary>
+        /// 不良品操作类型
+        /// </summary>
+        public virtual ICollection<BadGoodsList> BadGoodsOperationTypes { get; }
+        /// <summary>
+        /// 业务日志业务类型
+        /// </summary>
+        public virtual ICollection<BusinessLog> BusinessTypes { get; }
+        /// <summary>
+        /// 业务日志操作编码
+        /// </summary>
+        public virtual ICollection<BusinessLog> BusinessOperationCodes { get; }
         public DataDictionaryInfo()
         {
             MaterialTypes = new List<Material>();
@@ -105,10 +117,13 @@ namespace Test.Core.Entities
             TemplateTypes = new List<PickupTemplate>();
             TraceStatuses = new List<Trace>();
             BoxeTypes = new List<Box>();
-            OperatorCodes = new List<OperatorLog>();
-            OperatorLogLevels = new List<OperatorLog>();
-            OperatorBusinessTypes = new List<OperatorLog>();
+            OperationCodes = new List<OperatorLog>();
+            OperationLogLevels = new List<OperatorLog>();
+            OperationBusinessTypes = new List<OperatorLog>();
             OriginalTypes = new List<SelfPickup>();
+            BadGoodsOperationTypes = new List<BadGoodsList>();
+            BusinessTypes = new List<BusinessLog>();
+            BusinessOperationCodes = new List<BusinessLog>();
         }
     }
 }

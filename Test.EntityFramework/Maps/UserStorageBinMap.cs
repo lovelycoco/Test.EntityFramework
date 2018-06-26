@@ -14,6 +14,7 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("UserStorageBin");
             HasKey(t=>t.Id);
+            Property(t => t.IsEnabled).IsConcurrencyToken();
         }
     }
 }

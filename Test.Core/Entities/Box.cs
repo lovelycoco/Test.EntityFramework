@@ -32,10 +32,15 @@ namespace Test.Core.Entities
         /// 物料记录
         /// </summary>
         public virtual MaterialList MaterialList { get; set; }
+        /// <summary>
+        /// 不良品记录
+        /// </summary>
+        public virtual ICollection<BadGoodsList>  BadGoodsLists { get; }
         public Box()
         {
             IsEnabled = true;
             IsDamaged = false;
+            BadGoodsLists = new List<BadGoodsList>();
         }
     }
 }

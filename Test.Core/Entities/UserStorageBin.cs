@@ -9,7 +9,7 @@ namespace Test.Core.Entities
     /// <summary>
     /// 责任人与库位关系
     /// </summary>
-    public class UserStorageBin:BaseEntityOfGuid
+    public class UserStorageBin : BaseEntityOfOperator
     {
         /// <summary>
         /// 责任人Id
@@ -27,5 +27,13 @@ namespace Test.Core.Entities
         /// 库位
         /// </summary>
         public virtual StorageBin StorageBin { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsEnabled { get; set; }
+        public UserStorageBin()
+        {
+            IsEnabled = true;
+        }
     }
 }

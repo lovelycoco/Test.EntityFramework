@@ -24,10 +24,15 @@ namespace Test.Core.Entities
         /// 用户角色关系
         /// </summary>
         public virtual ICollection<UserRole> UserRoles { get; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsEnabled { get; set; }
         public Role()
         {
             RolePermissions = new List<RolePermission>();
             UserRoles = new List<UserRole>();
+            IsEnabled = true;
         }
     }
 }

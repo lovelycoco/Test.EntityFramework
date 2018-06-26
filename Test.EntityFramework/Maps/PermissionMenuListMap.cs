@@ -8,12 +8,13 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class RolePermissionMap:EntityTypeConfiguration<RolePermission>
+    public class PermissionMenuListMap:EntityTypeConfiguration<PermissionMenuList>
     {
-        public RolePermissionMap()
+        public PermissionMenuListMap()
         {
-            ToTable("RolePermission");
-            HasKey(t=>t.Id);
+            ToTable("PermissionMenuList");
+            HasKey(t => t.Id);
+
             Property(t => t.IsEnabled).IsConcurrencyToken();
         }
     }

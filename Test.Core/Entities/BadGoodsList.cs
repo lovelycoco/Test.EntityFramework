@@ -24,5 +24,25 @@ namespace Test.Core.Entities
         /// 返修单号
         /// </summary>
         public virtual string RepairNo { get; set; }
+        /// <summary>
+        /// 操作类型Id
+        /// </summary>
+        public virtual Guid TypeId { get; set; }
+        /// <summary>
+        /// 操作类型
+        /// </summary>
+        public virtual DataDictionaryInfo OperationType { get; set; }
+        /// <summary>
+        /// 操作时间
+        /// </summary>
+        public virtual DateTime OperationDate { get; set; }
+        /// <summary>
+        /// 器具Id
+        /// </summary>
+        public virtual Guid BoxId { get; set; }
+        /// <summary>
+        /// 器具信息
+        /// </summary>
+        public virtual Box Box { get; set; }
     }
 }

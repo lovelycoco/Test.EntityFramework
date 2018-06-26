@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Test.Core.Entities
 {
     /// <summary>
-    /// 操作日志
+    /// 业务日志表
     /// </summary>
-    public class OperatorLog : BaseEntityOfOperator
+    public class BusinessLog : BaseEntityOfOperator
     {
         /// <summary>
         /// 业务类型Id
@@ -28,21 +28,21 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual DataDictionaryInfo OperationCode { get; set; }
         /// <summary>
-        /// 操作内容
-        /// </summary>
-        public virtual string Operation { get; set; }
-        /// <summary>
-        /// 告警级别Id
-        /// </summary>
-        public virtual Guid LevelId { get; set; }
-        /// <summary>
-        /// 告警级别
-        /// </summary>
-        public virtual DataDictionaryInfo LogLevel { get; set; }
-        /// <summary>
-        /// 操作备注
+        /// 备注
         /// </summary>
         public virtual string Memo { get; set; }
-
+        /// <summary>
+        /// 操作表
+        /// </summary>
+        public virtual string OperationTable { get; set; }
+        /// <summary>
+        /// 数据表Id
+        /// </summary>
+        public virtual Guid DataId { get; set; }
+        public virtual ICollection<BusinessLogList>  BusinessLogLists { get; set; }
+        public BusinessLog()
+        {
+            BusinessLogLists = new List<BusinessLogList>();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Test.EntityFramework.Maps
             HasKey(t=>t.Id);
 
             Property(t=>t.RoleName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
+            Property(t => t.IsEnabled).IsConcurrencyToken();
             HasMany(t => t.RolePermissions).WithRequired(r => r.Role).HasForeignKey(k => k.RoleId).WillCascadeOnDelete(false);
             HasMany(t => t.UserRoles).WithRequired(u => u.Role).HasForeignKey(k => k.RoleId).WillCascadeOnDelete(false);
         }

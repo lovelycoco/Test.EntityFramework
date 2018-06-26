@@ -27,10 +27,19 @@ namespace Test.Core.Entities
         /// 角色权限关系
         /// </summary>
         public virtual ICollection<RolePermission> RolePermissions { get; }
+        /// <summary>
+        /// 权限菜单关系
+        /// </summary>
+        public virtual ICollection<PermissionMenuList> PermissionMenuLists { get; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsEnabled { get; set; }
 
         public Permission()
         {
             RolePermissions = new List<RolePermission>();
+            PermissionMenuLists = new List<PermissionMenuList>();
         }
     }
 }

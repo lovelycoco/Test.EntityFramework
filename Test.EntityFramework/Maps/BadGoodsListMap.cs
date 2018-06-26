@@ -16,6 +16,9 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
 
             Property(t => t.RepairNo).IsOptional().HasMaxLength(100);
+
+            HasRequired(t => t.OperationType).WithMany(d => d.BadGoodsOperationTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.Box).WithMany(b => b.BadGoodsLists).HasForeignKey(t=>t.BoxId).WillCascadeOnDelete(false);
         }
     }
 }

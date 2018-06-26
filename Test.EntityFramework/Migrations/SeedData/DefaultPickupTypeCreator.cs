@@ -25,11 +25,11 @@ namespace Test.EntityFramework.Migrations.SeedData
         {
             List<DataDictionaryInfo> dataDictionaryInfos = new List<DataDictionaryInfo>();
 
-            var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty });
-            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常", Operator = Guid.Empty, DataDictionary = dict };
-            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急", Operator = Guid.Empty, DataDictionary = dict };
-            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥", Operator = Guid.Empty, DataDictionary = dict };
-            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众", Operator = Guid.Empty, DataDictionary = dict };
+            var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型" });
+            DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常",  DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急",  DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥",  DataDictionary = dict };
+            DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众",  DataDictionary = dict };
             dataDictionaryInfos.Add(dataDictionaryInfo1);
             dataDictionaryInfos.Add(dataDictionaryInfo2);
             dataDictionaryInfos.Add(dataDictionaryInfo3);

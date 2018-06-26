@@ -18,8 +18,10 @@ namespace Test.EntityFramework.Maps
             Property(t => t.PermissionName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.FeatureName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.Description).IsOptional().HasMaxLength(256).IsConcurrencyToken();
-
+            Property(t => t.IsEnabled).IsConcurrencyToken();
             HasMany(t => t.RolePermissions).WithRequired(r => r.Permission).HasForeignKey(r => r.PermissionId).WillCascadeOnDelete(false);
+
+            HasMany(t => t.PermissionMenuLists).WithRequired(p => p.Permission).HasForeignKey(k => k.PermissionId).WillCascadeOnDelete(false);
         }
     }
 }

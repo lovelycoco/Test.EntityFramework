@@ -6,32 +6,29 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
-    /// <summary>
-    /// 角色权限关系表
-    /// </summary>
-    public class RolePermission : BaseEntityOfOperator
+    public class PermissionMenuList : BaseEntityOfOperator
     {
-        /// <summary>
-        /// 角色Id
-        /// </summary>
-        public virtual Guid RoleId { get; set; }
-        /// <summary>
-        /// 角色
-        /// </summary>
-        public virtual Role Role { get; set; }
         /// <summary>
         /// 权限Id
         /// </summary>
         public virtual Guid PermissionId { get; set; }
         /// <summary>
-        /// 权限
+        /// 权限信息
         /// </summary>
         public virtual Permission Permission { get; set; }
+        /// <summary>
+        /// 菜单Id
+        /// </summary>
+        public virtual Guid MenuListId { get; set; }
+        /// <summary>
+        /// 菜单信息
+        /// </summary>
+        public virtual MenuList MenuList { get; set; }
         /// <summary>
         /// 是否启用
         /// </summary>
         public virtual bool IsEnabled { get; set; }
-        public RolePermission()
+        public PermissionMenuList()
         {
             IsEnabled = true;
         }

@@ -9,7 +9,7 @@ namespace Test.Core.Entities.Test
     /// <summary>
     /// 用户角色关系
     /// </summary>
-    public class UserRole : BaseEntityOfGuid
+    public class UserRole : BaseEntityOfOperator
     {
         /// <summary>
         /// 用户id
@@ -27,9 +27,13 @@ namespace Test.Core.Entities.Test
         /// 角色
         /// </summary>
         public virtual Role Role { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public virtual bool IsEnabled { get; set; }
         public UserRole()
         {
-
+            IsEnabled = true;
         }
     }
 }

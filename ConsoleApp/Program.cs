@@ -120,7 +120,7 @@ namespace ConsoleApp
                 db.Database.Log = Console.WriteLine;
 
                 //var user = db.Set<User>().AsNoTracking().Any(u => u.UserName == "wangjunpeng");
-                var user = db.Set<User>().AsNoTracking().Any(u => u.UserName == DbFunctions.AsNonUnicode("wangjunpeng"));
+                var user = db.Set<User>().AsNoTracking().Any(u => u.LoginName == DbFunctions.AsNonUnicode("wangjunpeng"));
 
             }
         }
@@ -180,7 +180,7 @@ namespace ConsoleApp
 
         private static void TestUserRolePermission()
         {
-            var user = new User { UserName = "wangjunpeng", Password = "123456", Email = "junpeng1949@163.com", NormalizedUserName = "王俊鹏" };
+            var user = new User { LoginName = "wangjunpeng", Password = "123456", Email = "junpeng1949@163.com", UserName = "王俊鹏" };
             var permission1 = new Permission { PermissionName = "permission1", FeatureName = "权限1", Description = "权限1的描述" };
             var permission2 = new Permission { PermissionName = "permission2", FeatureName = "权限2", Description = "权限2的描述" };
             var permission3 = new Permission { PermissionName = "permission3", FeatureName = "权限3", Description = "权限3的描述" };
