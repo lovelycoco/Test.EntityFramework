@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maps\AccountsMap.cs" />
     <Compile Include="Maps\BadGoodsListMap.cs" />
     <Compile Include="Maps\BadGoodsMap.cs" />
     <Compile Include="Maps\BatchMap.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Maps\RolePermissionMap.cs" />
     <Compile Include="Maps\SelfPickupListMap.cs" />
     <Compile Include="Maps\SelfPickupMap.cs" />
+    <Compile Include="Maps\StockMap.cs" />
     <Compile Include="Maps\StorageAreaMap.cs" />
     <Compile Include="Maps\StorageBinMap.cs" />
     <Compile Include="Maps\SupplierMap.cs" />
@@ -82,10 +84,6 @@
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806260110200_CreateEntity.cs" />
-    <Compile Include="Migrations\201806260110200_CreateEntity.Designer.cs">
-      <DependentUpon>201806260110200_CreateEntity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
     <Compile Include="Migrations\SeedData\InitialHostDbBuilder.cs" />
@@ -102,11 +100,6 @@
       <Project>{b85c16ef-c570-4120-a04b-68e7711ae10e}</Project>
       <Name>Test.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806260110200_CreateEntity.resx">
-      <DependentUpon>201806260110200_CreateEntity.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

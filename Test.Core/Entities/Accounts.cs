@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Test.Core.Entities
 {
     /// <summary>
-    /// 基础库存表
+    /// 账目表
     /// </summary>
-    public  class Stock : BaseEntityOfOperator
+    public class Accounts : BaseEntityOfOperator
     {
         /// <summary>
         /// 物料Id
@@ -47,6 +47,9 @@ namespace Test.Core.Entities
         /// 虚拟数量
         /// </summary>
         public virtual int VirtualQuantity { get; set; }
+        /// <summary>
+        /// 封账时间
+        /// </summary>
+        public virtual DateTime? BlockedDate { get; set; }
     }
- 
 }

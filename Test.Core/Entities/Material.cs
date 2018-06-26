@@ -99,7 +99,11 @@ namespace Test.Core.Entities
         /// <summary>
         /// 库存信息
         /// </summary>
-        public virtual ICollection<Stock> Stocks { get;}
+        public virtual ICollection<Stock> Stocks { get; }
+        /// <summary>
+        /// 账目信息
+        /// </summary>
+        public virtual ICollection<Accounts> Accounts { get; }
         public Material()
         {
             IsEnabled = true;
@@ -114,6 +118,7 @@ namespace Test.Core.Entities
             BadGoodsLists = new List<BadGoodsList>();
             SelfPickupLists = new List<SelfPickupList>();
             Stocks = new List<Stock>();
+            Accounts = new List<Accounts>();
         }
 
     }
