@@ -28,6 +28,7 @@ namespace Test.EntityFramework.Maps
 
             HasMany(t => t.UserStorageBins).WithRequired(s => s.User).HasForeignKey(k => k.UserId).WillCascadeOnDelete(false);
             HasMany(t => t.UserRoles).WithRequired(u => u.User).HasForeignKey(k => k.UserId).WillCascadeOnDelete(false);
+           
         }
     }
 }

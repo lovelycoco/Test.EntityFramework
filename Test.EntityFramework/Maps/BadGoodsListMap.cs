@@ -15,7 +15,8 @@ namespace Test.EntityFramework.Maps
             ToTable("BadGoodsList");
             HasKey(t => t.Id);
 
-            Property(t => t.RepairNo).IsOptional().HasMaxLength(100);
+            Property(t => t.RepairNo).IsOptional().HasMaxLength(100).IsConcurrencyToken();
+            Property(t => t.RepairImage).IsOptional().HasColumnType("image").IsConcurrencyToken();
 
             HasRequired(t => t.OperationType).WithMany(d => d.BadGoodsOperationTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
             HasRequired(t => t.Box).WithMany(b => b.BadGoodsLists).HasForeignKey(t=>t.BoxId).WillCascadeOnDelete(false);

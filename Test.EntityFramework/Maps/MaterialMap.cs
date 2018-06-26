@@ -32,7 +32,7 @@ namespace Test.EntityFramework.Maps
             HasMany(t => t.TemplateLists).WithRequired(t => t.Material).HasForeignKey(t => t.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.BadGoodsLists).WithRequired(b => b.Material).HasForeignKey(b => b.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.SelfPickupLists).WithRequired(s => s.Material).HasForeignKey(s => s.MaterialId).WillCascadeOnDelete(false);
-
+            HasMany(t => t.Stocks).WithRequired(s => s.Material).HasForeignKey(s => s.MaterialId).WillCascadeOnDelete(false);
         }
     }
 }

@@ -25,6 +25,10 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual string RepairNo { get; set; }
         /// <summary>
+        /// 返修单图片
+        /// </summary>
+        public virtual byte[] RepairImage { get; set; }
+        /// <summary>
         /// 操作类型Id
         /// </summary>
         public virtual Guid TypeId { get; set; }

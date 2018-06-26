@@ -67,6 +67,7 @@
     <Compile Include="Entities\PreEntry.cs" />
     <Compile Include="Entities\SelfPickup.cs" />
     <Compile Include="Entities\SelfPickupList.cs" />
+    <Compile Include="Entities\Stock.cs" />
     <Compile Include="Entities\StorageArea.cs" />
     <Compile Include="Entities\StorageBin.cs" />
     <Compile Include="Entities\Supplier.cs" />

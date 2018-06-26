@@ -13,7 +13,7 @@ namespace Test.EntityFramework.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806260018124_CreateEntity"; }
+            get { return "201806260110200_CreateEntity"; }
         }
         
         string IMigrationMetadata.Source

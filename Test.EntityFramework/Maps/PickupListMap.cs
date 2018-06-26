@@ -14,8 +14,8 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("PickupList");
             HasKey(t=>t.Id);
-            
 
+            HasRequired(t => t.Box).WithMany(b => b.PickupLists).HasForeignKey(t => t.BoxId).WillCascadeOnDelete(false);
 
         }
     }

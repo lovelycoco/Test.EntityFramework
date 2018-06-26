@@ -77,7 +77,6 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual ICollection<UserRole> UserRoles { get; }
 
-
         public User()
         {
             UserStorageBins = new List<UserStorageBin>();

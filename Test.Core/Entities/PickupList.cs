@@ -28,6 +28,14 @@ namespace Test.Core.Entities
         /// 备货单信息
         /// </summary>
         public virtual Pickup PickingList { get; set; }
+        /// <summary>
+        /// 器具Id
+        /// </summary>
+        public virtual Guid BoxId { get; set; }
+        /// <summary>
+        /// 器具信息
+        /// </summary>
+        public virtual Box Box { get; set; }
         public PickupList()
         {
             Quantity = 0;

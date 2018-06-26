@@ -36,11 +36,13 @@ namespace Test.Core.Entities
         /// 不良品记录
         /// </summary>
         public virtual ICollection<BadGoodsList>  BadGoodsLists { get; }
+        public virtual ICollection<PickupList>  PickupLists { get; }
         public Box()
         {
             IsEnabled = true;
             IsDamaged = false;
             BadGoodsLists = new List<BadGoodsList>();
+            PickupLists = new List<PickupList>();
         }
     }
 }

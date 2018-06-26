@@ -9,8 +9,9 @@ namespace Test.Core.Entities
     /// <summary>
     /// 备货单
     /// </summary>
-    public  class Pickup : BaseEntityOfOperator
+    public class Pickup : BaseEntityOfOperator
     {
+
         /// <summary>
         /// 备货单号
         /// </summary>
@@ -44,6 +45,14 @@ namespace Test.Core.Entities
         /// </summary>
         public virtual DataDictionaryInfo PickupStatus { get; set; }
         /// <summary>
+        /// 备货人Id
+        /// </summary>
+        public virtual Guid? PickupUserId { get; set; }
+        /// <summary>
+        /// 备货完成时间
+        /// </summary>
+        public virtual DateTime? PickupDate { get; set; }
+        /// <summary>
         /// 备货区域Id
         /// </summary>
         public virtual Guid AreaId { get; set; }
@@ -55,6 +64,14 @@ namespace Test.Core.Entities
         /// 看板单
         /// </summary>
         public virtual Note Note { get; set; }
+        /// <summary>
+        /// 出门证操作人Id
+        /// </summary>
+        public virtual Guid? OutCardUserId { get; set; }
+        /// <summary>
+        /// 出门证操作时间
+        /// </summary>
+        public virtual DateTime? OutCardDate { get; set; }
         public Pickup()
         {
             IsPrinted = false;

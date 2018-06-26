@@ -96,6 +96,10 @@ namespace Test.Core.Entities
         /// 自提记录
         /// </summary>
         public virtual ICollection<SelfPickupList> SelfPickupLists { get; }
+        /// <summary>
+        /// 库存信息
+        /// </summary>
+        public virtual ICollection<Stock> Stocks { get;}
         public Material()
         {
             IsEnabled = true;
@@ -109,6 +113,7 @@ namespace Test.Core.Entities
             TemplateLists = new List<TemplateList>();
             BadGoodsLists = new List<BadGoodsList>();
             SelfPickupLists = new List<SelfPickupList>();
+            Stocks = new List<Stock>();
         }
 
     }
