@@ -16,6 +16,7 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
 
             Property(t => t.BillNo).IsRequired().HasColumnType("varchar").HasMaxLength(50);
+            Property(t => t.Memo).IsOptional().HasMaxLength(256);
             HasMany(t => t.MaterialLists).WithRequired(m => m.BillofMaterial).HasForeignKey(m => m.BillOfMaterialId).WillCascadeOnDelete(false);
         }
     }

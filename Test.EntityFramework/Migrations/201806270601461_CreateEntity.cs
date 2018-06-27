@@ -467,7 +467,7 @@ namespace Test.EntityFramework.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         BillNo = c.String(nullable: false, maxLength: 50, unicode: false),
-                        Memo = c.String(),
+                        Memo = c.String(maxLength: 256),
                         ReceiveDate = c.DateTime(nullable: false),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),

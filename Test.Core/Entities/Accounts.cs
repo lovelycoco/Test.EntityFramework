@@ -9,11 +9,13 @@ namespace Test.Core.Entities
     /// <summary>
     /// 账目表
     /// </summary>
+    [DBDescription("账目表")]
     public class Accounts : BaseEntityOfOperator
     {
         /// <summary>
         /// 物料Id
         /// </summary>
+        [DBDescription("物料Id")]
         public virtual Guid MaterialId { get; set; }
         /// <summary>
         /// 物料信息

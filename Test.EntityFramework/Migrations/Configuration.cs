@@ -13,11 +13,14 @@ namespace Test.EntityFramework.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Test.EntityFramework.TestDbContext context)
+        protected override void Seed(TestDbContext context)
         {
             //Host seed
             new InitialHostDbBuilder(context).Create();
             context.SaveChanges();
+
+            var updater = new DBDescriptionUpdater<TestDbContext>(context);
+            updater.UpdateDatabaseDescriptions();
         }
     }
 }
