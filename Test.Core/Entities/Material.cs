@@ -63,7 +63,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 单价
         /// </summary>
-        public virtual UnitPrice UnitPrice { get; set; }
+        public virtual decimal UnitPrice { get; set; }
         /// <summary>
         /// 物料记录
         /// </summary>

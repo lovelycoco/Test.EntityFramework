@@ -10,17 +10,18 @@ namespace Test.EntityFramework.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(TestDbContext context)
         {
+            var updater = new DBDescriptionUpdater<TestDbContext>(context);
+            updater.UpdateDatabaseDescriptions();
+
             //Host seed
             new InitialHostDbBuilder(context).Create();
             context.SaveChanges();
 
-            var updater = new DBDescriptionUpdater<TestDbContext>(context);
-            updater.UpdateDatabaseDescriptions();
         }
     }
 }

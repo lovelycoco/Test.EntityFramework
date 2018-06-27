@@ -17,7 +17,7 @@ namespace Test.EntityFramework.Maps
 
             Property(t => t.MaterialNo).IsRequired().HasColumnType("varchar").HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.MaterialName).IsRequired().HasMaxLength(50).IsConcurrencyToken();
-
+            Property(t => t.UnitPrice).IsRequired().HasPrecision(18, 4).IsConcurrencyToken();
             Property(t => t.IsEnabled).IsConcurrencyToken();
             HasRequired(t => t.Supplier).WithMany(s => s.Materials).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
 

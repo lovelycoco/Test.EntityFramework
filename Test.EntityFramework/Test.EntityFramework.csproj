@@ -85,13 +85,12 @@
     <Compile Include="Maps\SupplierMap.cs" />
     <Compile Include="Maps\TemplateListMap.cs" />
     <Compile Include="Maps\TraceMap.cs" />
-    <Compile Include="Maps\UnitPriceMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Maps\UserRoleMap.cs" />
     <Compile Include="Maps\UserStorageBinMap.cs" />
-    <Compile Include="Migrations\201806270601461_CreateEntity.cs" />
-    <Compile Include="Migrations\201806270601461_CreateEntity.Designer.cs">
-      <DependentUpon>201806270601461_CreateEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201806270636540_CreateEntity.cs" />
+    <Compile Include="Migrations\201806270636540_CreateEntity.Designer.cs">
+      <DependentUpon>201806270636540_CreateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultPickupTypeCreator.cs" />
@@ -112,8 +111,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806270601461_CreateEntity.resx">
-      <DependentUpon>201806270601461_CreateEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806270636540_CreateEntity.resx">
+      <DependentUpon>201806270636540_CreateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

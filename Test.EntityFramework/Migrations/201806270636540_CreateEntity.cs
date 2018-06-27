@@ -46,6 +46,7 @@ namespace Test.EntityFramework.Migrations
                         PriorityLevel = c.Int(nullable: false),
                         SupplierId = c.Guid(nullable: false),
                         MaterialTypeId = c.Guid(nullable: false),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 4),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
@@ -776,27 +777,10 @@ namespace Test.EntityFramework.Migrations
                 .ForeignKey("dbo.Material", t => t.MaterialId)
                 .Index(t => t.MaterialId);
             
-            CreateTable(
-                "dbo.UnitPrice",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Amount = c.Decimal(nullable: false, precision: 18, scale: 4),
-                        Operator = c.Guid(nullable: false),
-                        CreatedTime = c.DateTime(nullable: false),
-                        ModifiedTime = c.DateTime(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        MaterialId = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.MaterialId);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UnitPrice", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.TemplateList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Material", "SupplierId", "dbo.Supplier");
             DropForeignKey("dbo.Material", "StorageBinId", "dbo.StorageBin");
@@ -856,7 +840,6 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.BusinessLogList", "BusinessLogId", "dbo.BusinessLog");
             DropForeignKey("dbo.BadGoods", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Accounts", "MaterialId", "dbo.Material");
-            DropIndex("dbo.UnitPrice", new[] { "MaterialId" });
             DropIndex("dbo.Stock", new[] { "MaterialId" });
             DropIndex("dbo.PreEntry", new[] { "MaterialId" });
             DropIndex("dbo.TemplateList", new[] { "MaterialId" });
@@ -916,7 +899,6 @@ namespace Test.EntityFramework.Migrations
             DropIndex("dbo.Material", new[] { "MaterialTypeId" });
             DropIndex("dbo.Material", new[] { "SupplierId" });
             DropIndex("dbo.Accounts", new[] { "MaterialId" });
-            DropTable("dbo.UnitPrice");
             DropTable("dbo.Stock");
             DropTable("dbo.PreEntry");
             DropTable("dbo.TemplateList");

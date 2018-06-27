@@ -85,7 +85,6 @@
     <Compile Include="Entities\RolePermission.cs" />
     <Compile Include="Entities\Test\Student.cs" />
     <Compile Include="Entities\Trace.cs" />
-    <Compile Include="Entities\UnitPrice.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\UserStorageBin.cs" />
