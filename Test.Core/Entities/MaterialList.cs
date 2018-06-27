@@ -46,7 +46,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料状态Id
         /// </summary>
-        public virtual Guid StatusId { get; set; }
+        public virtual Guid MaterialStatusId { get; set; }
         /// <summary>
         /// 物料状态
         /// </summary>

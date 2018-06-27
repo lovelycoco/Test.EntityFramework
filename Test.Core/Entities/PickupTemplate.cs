@@ -18,7 +18,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 模板类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid TemplateTypeId { get; set; }
         /// <summary>
         /// 模板类型
         /// </summary>

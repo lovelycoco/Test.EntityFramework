@@ -22,14 +22,22 @@ namespace Test.Core.Entities
         /// <summary>
         /// 追溯状态Id
         /// </summary>
-        public virtual Guid StatusId { get; set; }
+        public virtual Guid TraceStatusId { get; set; }
         /// <summary>
         /// 追溯状态类型
         /// </summary>
         public virtual DataDictionaryInfo TraceStatus { get; set; }
         /// <summary>
+        /// 操作描述
+        /// </summary>
+        public virtual string Operation { get; set; }
+        /// <summary>
         /// 备注
         /// </summary>
         public virtual string Memo { get; set; }
+        /// <summary>
+        /// 当前数量
+        /// </summary>
+        public virtual int CurrentQuantity { get; set; }
     }
 }

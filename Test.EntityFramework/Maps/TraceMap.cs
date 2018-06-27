@@ -14,10 +14,10 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("Trace");
             HasKey(t => t.Id);
-
+            Property(t => t.Operation).IsOptional().HasMaxLength(50).IsConcurrencyToken();
             Property(t => t.Memo).IsOptional().HasMaxLength(256).IsConcurrencyToken();
 
-            HasRequired(t => t.TraceStatus).WithMany(d => d.TraceStatuses).HasForeignKey(t => t.StatusId).WillCascadeOnDelete(false);
+            HasRequired(t => t.TraceStatus).WithMany(d => d.TraceStatuses).HasForeignKey(t => t.TraceStatusId).WillCascadeOnDelete(false);
         }
     }
 }

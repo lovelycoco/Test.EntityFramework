@@ -16,11 +16,12 @@ namespace Test.EntityFramework.Maps
             HasKey(t => t.Id);
 
             Property(t => t.SelfPeople).IsRequired().HasMaxLength(10).IsConcurrencyToken();
-            Property(t => t.IsPrinted).IsConcurrencyToken();
+            Property(t => t.Memo).IsOptional().HasMaxLength(256).IsConcurrencyToken();
+
 
             HasRequired(t => t.Supplier).WithMany(s => s.SelfPickups).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
             HasMany(t => t.SelfPickupLists).WithRequired(s => s.SelfPickup).HasForeignKey(t => t.SelfId).WillCascadeOnDelete(false);
-            HasRequired(t => t.OriginalType).WithMany(d => d.OriginalTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.OriginalType).WithMany(d => d.OriginalTypes).HasForeignKey(t => t.OriginalTypeId).WillCascadeOnDelete(false);
         }
     }
 }

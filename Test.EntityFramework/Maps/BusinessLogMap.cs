@@ -18,8 +18,8 @@ namespace Test.EntityFramework.Maps
             Property(t => t.OperationTable).IsRequired().HasColumnType("varchar").HasMaxLength(50);
             Property(t => t.Memo).IsOptional().HasMaxLength(256);
 
-            HasRequired(t => t.BusinessType).WithMany(d => d.BusinessTypes).HasForeignKey(t=>t.TypeId).WillCascadeOnDelete(false);
-            HasRequired(t => t.OperationCode).WithMany(d => d.BusinessOperationCodes).HasForeignKey(t => t.CodeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.BusinessType).WithMany(d => d.BusinessTypes).HasForeignKey(t=>t.BusinessTypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.OperationCode).WithMany(d => d.BusinessOperationCodes).HasForeignKey(t => t.OperationCodeId).WillCascadeOnDelete(false);
 
             HasMany(t => t.BusinessLogLists).WithRequired(b => b.BusinessLog).HasForeignKey(b => b.BusinessLogId).WillCascadeOnDelete(false);
         }

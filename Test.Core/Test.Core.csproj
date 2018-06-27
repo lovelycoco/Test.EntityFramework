@@ -53,6 +53,7 @@
     <Compile Include="Entities\BusinessLog.cs" />
     <Compile Include="Entities\BusinessLogList.cs" />
     <Compile Include="Entities\CycleCount.cs" />
+    <Compile Include="Entities\CycleCountList.cs" />
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryInfo.cs" />
     <Compile Include="Entities\Material.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="Entities\PickupList.cs" />
     <Compile Include="Entities\Pickup.cs" />
     <Compile Include="Entities\PreEntry.cs" />
+    <Compile Include="Entities\Replenishment.cs" />
+    <Compile Include="Entities\ReplenishmentList.cs" />
     <Compile Include="Entities\SelfPickup.cs" />
     <Compile Include="Entities\SelfPickupList.cs" />
     <Compile Include="Entities\Stock.cs" />

@@ -8,13 +8,14 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class AccountsMap : EntityTypeConfiguration<Accounts>
+    public class CycleCountListMap : EntityTypeConfiguration<CycleCountList>
     {
-        public AccountsMap()
+        public CycleCountListMap()
         {
-            ToTable("Accounts");
+            ToTable("CycleCountList");
             HasKey(t => t.Id);
-            Property(t => t.IsSearched).IsConcurrencyToken();
+
+            HasRequired(t => t.Box).WithMany(b => b.CycleCountLists).HasForeignKey(t => t.BoxId).WillCascadeOnDelete(false);
         }
     }
 }

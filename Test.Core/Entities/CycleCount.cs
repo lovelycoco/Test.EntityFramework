@@ -12,9 +12,13 @@ namespace Test.Core.Entities
     public class CycleCount : BaseEntityOfOperator
     {
         /// <summary>
+        /// 操作时间
+        /// </summary>
+        public virtual DateTime OperationDate { get; set; }
+        /// <summary>
         /// 盘库类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid CountTypeId { get; set; }
         /// <summary>
         /// 盘库类型
         /// </summary>
@@ -43,9 +47,14 @@ namespace Test.Core.Entities
         /// 是否目视盘库
         /// </summary>
         public virtual bool IsVisual { get; set; }
+        /// <summary>
+        /// 盘库记录
+        /// </summary>
+        public virtual ICollection<CycleCountList>  CycleCountLists { get; }
         public CycleCount()
         {
             IsVisual = false;
+            CycleCountLists = new List<CycleCountList>();
         }
     }
 }

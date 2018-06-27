@@ -19,7 +19,8 @@ namespace Test.EntityFramework.Maps
             Property(t => t.Memo).IsOptional().HasMaxLength(256).IsConcurrencyToken();
 
             HasRequired(t => t.StorageBin).WithMany(s => s.CycleCounts).HasForeignKey(t => t.StorageBinId).WillCascadeOnDelete(false);
-            HasRequired(t => t.CountType).WithMany(d => d.CountTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.CountType).WithMany(d => d.CountTypes).HasForeignKey(t => t.CountTypeId).WillCascadeOnDelete(false);
+            HasMany(t => t.CycleCountLists).WithRequired(c => c.CycleCount).HasForeignKey(c => c.CycleCountId).WillCascadeOnDelete(false);
         }
 
     }

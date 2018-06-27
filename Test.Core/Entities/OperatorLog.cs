@@ -14,7 +14,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 业务类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid BusinessTypeId { get; set; }
         /// <summary>
         /// 业务类型
         /// </summary>
@@ -22,7 +22,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 操作编码Id
         /// </summary>
-        public virtual Guid CodeId { get; set; }
+        public virtual Guid OperationCodeId { get; set; }
         /// <summary>
         /// 操作编码
         /// </summary>

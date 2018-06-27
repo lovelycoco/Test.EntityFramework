@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Test.Core.Entities
 {
+    /// <summary>
+    /// 业务日志记录
+    /// </summary>
     public class BusinessLogList : BaseEntityOfGuid
     {
         /// <summary>

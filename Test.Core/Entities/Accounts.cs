@@ -55,5 +55,14 @@ namespace Test.Core.Entities
         /// 封账时间
         /// </summary>
         public virtual DateTime? BlockedDate { get; set; }
+        /// <summary>
+        /// 是否被供应商查看
+        /// </summary>
+        public virtual bool IsSearched { get; set; }
+
+        public Accounts()
+        {
+            IsSearched = false;
+        }
     }
 }

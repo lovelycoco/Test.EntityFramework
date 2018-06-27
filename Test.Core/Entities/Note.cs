@@ -18,7 +18,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 看板单类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid NoteTypeId { get; set; }
         /// <summary>
         /// 看板单类型
         /// </summary>
@@ -26,7 +26,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 看板单状态Id
         /// </summary>
-        public virtual Guid StatusId { get; set; }
+        public virtual Guid NoteStatusId { get; set; }
         /// <summary>
         /// 看板单状态
         /// </summary>

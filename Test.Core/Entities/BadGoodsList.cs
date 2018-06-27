@@ -31,7 +31,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 操作类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid OperationTypeId { get; set; }
         /// <summary>
         /// 操作类型
         /// </summary>

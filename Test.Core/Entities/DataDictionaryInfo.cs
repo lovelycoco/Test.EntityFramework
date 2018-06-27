@@ -103,6 +103,10 @@ namespace Test.Core.Entities
         /// 业务日志操作编码
         /// </summary>
         public virtual ICollection<BusinessLog> BusinessOperationCodes { get; }
+        /// <summary>
+        /// 补货状态
+        /// </summary>
+        public virtual ICollection<Replenishment> ReplenishmentStatuses { get; }
         public DataDictionaryInfo()
         {
             MaterialTypes = new List<Material>();
@@ -124,6 +128,7 @@ namespace Test.Core.Entities
             BadGoodsOperationTypes = new List<BadGoodsList>();
             BusinessTypes = new List<BusinessLog>();
             BusinessOperationCodes = new List<BusinessLog>();
+            ReplenishmentStatuses = new List<Replenishment>();
         }
     }
 }

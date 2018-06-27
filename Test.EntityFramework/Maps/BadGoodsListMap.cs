@@ -18,7 +18,7 @@ namespace Test.EntityFramework.Maps
             Property(t => t.RepairNo).IsOptional().HasMaxLength(100).IsConcurrencyToken();
             Property(t => t.RepairImage).IsOptional().HasColumnType("image").IsConcurrencyToken();
 
-            HasRequired(t => t.OperationType).WithMany(d => d.BadGoodsOperationTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.OperationType).WithMany(d => d.BadGoodsOperationTypes).HasForeignKey(t => t.OperationTypeId).WillCascadeOnDelete(false);
             HasRequired(t => t.Box).WithMany(b => b.BadGoodsLists).HasForeignKey(t=>t.BoxId).WillCascadeOnDelete(false);
         }
     }

@@ -55,7 +55,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 物料类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid MaterialTypeId { get; set; }
         /// <summary>
         /// 物料类型
         /// </summary>

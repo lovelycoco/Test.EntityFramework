@@ -31,7 +31,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid PickupTypeId { get; set; }
         /// <summary>
         /// 备货类型
         /// </summary>
@@ -39,7 +39,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货状态Id
         /// </summary>
-        public virtual Guid StatusId { get; set; }
+        public virtual Guid PickupStatusId { get; set; }
         /// <summary>
         /// 备货状态
         /// </summary>
@@ -55,7 +55,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 备货区域Id
         /// </summary>
-        public virtual Guid AreaId { get; set; }
+        public virtual Guid PickupAreaId { get; set; }
         /// <summary>
         /// 备货区域类型
         /// </summary>
@@ -72,9 +72,14 @@ namespace Test.Core.Entities
         /// 出门证操作时间
         /// </summary>
         public virtual DateTime? OutCardDate { get; set; }
+        /// <summary>
+        /// 出门证是否打印
+        /// </summary>
+        public virtual bool IsOutCardPrinted { get; set; }
         public Pickup()
         {
             IsPrinted = false;
+            IsOutCardPrinted = false;
             PickupLists = new List<PickupList>();
         }
 

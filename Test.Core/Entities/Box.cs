@@ -15,7 +15,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 器具类型Id
         /// </summary>
-        public virtual Guid TypeId { get; set; }
+        public virtual Guid BoxTypeId { get; set; }
         /// <summary>
         /// 器具类型
         /// </summary>
@@ -35,14 +35,28 @@ namespace Test.Core.Entities
         /// <summary>
         /// 不良品记录
         /// </summary>
-        public virtual ICollection<BadGoodsList>  BadGoodsLists { get; }
-        public virtual ICollection<PickupList>  PickupLists { get; }
+        public virtual ICollection<BadGoodsList> BadGoodsLists { get; }
+        /// <summary>
+        /// 备货记录
+        /// </summary>
+        public virtual ICollection<PickupList> PickupLists { get; }
+        /// <summary>
+        /// 盘库记录
+        /// </summary>
+        public virtual ICollection<CycleCountList> CycleCountLists { get; }
+        /// <summary>
+        /// 补货单记录
+        /// </summary>
+        public virtual ICollection<ReplenishmentList> ReplenishmentLists { get; }
+
         public Box()
         {
             IsEnabled = true;
             IsDamaged = false;
             BadGoodsLists = new List<BadGoodsList>();
             PickupLists = new List<PickupList>();
+            CycleCountLists = new List<CycleCountList>();
+            ReplenishmentLists = new List<ReplenishmentList>();
         }
     }
 }

@@ -18,9 +18,9 @@ namespace Test.EntityFramework.Maps
             Property(t => t.Operation).IsRequired().HasMaxLength(50);
             Property(t => t.Memo).IsRequired().HasMaxLength(256).IsConcurrencyToken();
 
-            HasRequired(t => t.OperationCode).WithMany(d => d.OperationCodes).HasForeignKey(t => t.CodeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.OperationCode).WithMany(d => d.OperationCodes).HasForeignKey(t => t.OperationCodeId).WillCascadeOnDelete(false);
             HasRequired(t => t.LogLevel).WithMany(d => d.OperationLogLevels).HasForeignKey(t => t.LevelId).WillCascadeOnDelete(false);
-            HasRequired(t => t.BusinessType).WithMany(d => d.OperationBusinessTypes).HasForeignKey(t => t.TypeId).WillCascadeOnDelete(false);
+            HasRequired(t => t.BusinessType).WithMany(d => d.OperationBusinessTypes).HasForeignKey(t => t.BusinessTypeId).WillCascadeOnDelete(false);
         }
     }
 }

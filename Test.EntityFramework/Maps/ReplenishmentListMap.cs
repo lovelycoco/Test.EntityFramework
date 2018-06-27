@@ -8,13 +8,14 @@ using Test.Core.Entities;
 
 namespace Test.EntityFramework.Maps
 {
-    public class AccountsMap : EntityTypeConfiguration<Accounts>
+    public class ReplenishmentListMap : EntityTypeConfiguration<ReplenishmentList>
     {
-        public AccountsMap()
+        public ReplenishmentListMap()
         {
-            ToTable("Accounts");
+            ToTable("ReplenishmentList");
             HasKey(t => t.Id);
-            Property(t => t.IsSearched).IsConcurrencyToken();
+
+            HasRequired(t => t.Box).WithMany(b => b.ReplenishmentLists).HasForeignKey(t => t.BoxId).WillCascadeOnDelete(false);
         }
     }
 }
