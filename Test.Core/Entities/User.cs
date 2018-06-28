@@ -83,6 +83,7 @@ namespace Test.Core.Entities
             UserRoles = new List<UserRole>();
             IsEnabled = true;
             IsQuited = false;
+
         }
     }
 }

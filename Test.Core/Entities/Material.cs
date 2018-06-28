@@ -87,11 +87,7 @@ namespace Test.Core.Entities
         /// <summary>
         /// 不良品
         /// </summary>
-        public virtual BadGoods BadGoods { get; set; }
-        /// <summary>
-        /// 不良品记录
-        /// </summary>
-        public virtual ICollection<BadGoodsList> BadGoodsLists { get; }
+        public virtual ICollection<BadGoods> BadGoods { get; }
         /// <summary>
         /// 自提记录
         /// </summary>
@@ -115,7 +111,7 @@ namespace Test.Core.Entities
             PickupLists = new List<PickupList>();
             NoteLists = new List<NoteList>();
             TemplateLists = new List<TemplateList>();
-            BadGoodsLists = new List<BadGoodsList>();
+            BadGoods = new List<BadGoods>();
             SelfPickupLists = new List<SelfPickupList>();
             Stocks = new List<Stock>();
             Accounts = new List<Accounts>();

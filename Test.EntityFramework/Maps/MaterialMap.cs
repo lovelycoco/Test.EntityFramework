@@ -21,16 +21,16 @@ namespace Test.EntityFramework.Maps
             Property(t => t.IsEnabled).IsConcurrencyToken();
             HasRequired(t => t.Supplier).WithMany(s => s.Materials).HasForeignKey(t => t.SupplierId).WillCascadeOnDelete(false);
 
-            HasOptional(x => x.StorageBin).WithOptionalDependent(m => m.Material).Map(x => x.MapKey("StorageBinId")).WillCascadeOnDelete(false);
+            HasOptional(m => m.StorageBin).WithOptionalDependent(m => m.Material).Map(x => x.MapKey("StorageBinId")).WillCascadeOnDelete(false);
             HasOptional(t => t.PreEntry).WithOptionalPrincipal(p => p.Material).Map(x => x.MapKey("MaterialId")).WillCascadeOnDelete(false);
-            HasOptional(t => t.BadGoods).WithOptionalPrincipal(b => b.Material).Map(x => x.MapKey("MaterialId")).WillCascadeOnDelete(false);
+           
 
             HasRequired(t => t.MaterialType).WithMany(d => d.MaterialTypes).HasForeignKey(t => t.MaterialTypeId).WillCascadeOnDelete(false);
             HasMany(t => t.MaterialLists).WithRequired(m => m.Material).HasForeignKey(m => m.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.PickupLists).WithRequired(p => p.Material).HasForeignKey(p => p.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.NoteLists).WithRequired(n => n.Material).HasForeignKey(n => n.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.TemplateLists).WithRequired(t => t.Material).HasForeignKey(t => t.MaterialId).WillCascadeOnDelete(false);
-            HasMany(t => t.BadGoodsLists).WithRequired(b => b.Material).HasForeignKey(b => b.MaterialId).WillCascadeOnDelete(false);
+            HasMany(t => t.BadGoods).WithRequired(b => b.Material).HasForeignKey(b => b.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.SelfPickupLists).WithRequired(s => s.Material).HasForeignKey(s => s.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.Stocks).WithRequired(s => s.Material).HasForeignKey(s => s.MaterialId).WillCascadeOnDelete(false);
             HasMany(t => t.Accounts).WithRequired(a => a.Material).HasForeignKey(a => a.MaterialId).WillCascadeOnDelete(false);

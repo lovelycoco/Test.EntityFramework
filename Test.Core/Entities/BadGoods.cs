@@ -12,6 +12,10 @@ namespace Test.Core.Entities
     public class BadGoods : BaseEntityOfOperator
     {
         /// <summary>
+        /// 物料ID
+        /// </summary>
+        public virtual Guid MaterialId { get; set; }
+        /// <summary>
         /// 物料信息
         /// </summary>
         public virtual Material Material { get; set; }
@@ -19,5 +23,13 @@ namespace Test.Core.Entities
         /// 总数量
         /// </summary>
         public virtual int TotalQuantity { get; set; }
+        /// <summary>
+        /// 不良品记录
+        /// </summary>
+        public virtual ICollection<BadGoodsList> BadGoodsLists { get;}
+        public BadGoods()
+        {
+            BadGoodsLists = new List<BadGoodsList>();
+        }
     }
 }

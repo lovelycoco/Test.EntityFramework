@@ -22,6 +22,8 @@ namespace Test.EntityFramework.Maps
             HasRequired(t => t.PickupStatus).WithMany(d => d.PickupStatuses).HasForeignKey(t => t.PickupStatusId).WillCascadeOnDelete(false);
             HasRequired(t => t.AreaType).WithMany(d => d.PickupAreaTypes).HasForeignKey(t => t.PickupAreaId).WillCascadeOnDelete(false);
 
+            
+
             //Map<StorageAreaPickup>(e => e.Requires("AreaType").HasValue(1)).Map<PickingAreaPickup>(r => r.Requires("AreaType").HasValue(2));
         }
     }

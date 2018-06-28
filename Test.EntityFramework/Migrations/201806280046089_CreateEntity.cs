@@ -66,12 +66,12 @@ namespace Test.EntityFramework.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
+                        MaterialId = c.Guid(nullable: false),
                         TotalQuantity = c.Int(nullable: false),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
-                        MaterialId = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Material", t => t.MaterialId)
@@ -82,13 +82,13 @@ namespace Test.EntityFramework.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        MaterialId = c.Guid(nullable: false),
+                        BadGoodsId = c.Guid(nullable: false),
                         Quantity = c.Int(nullable: false),
                         RepairNo = c.String(maxLength: 100),
                         RepairImage = c.Binary(storeType: "image"),
                         OperationTypeId = c.Guid(nullable: false),
                         OperationDate = c.DateTime(nullable: false),
-                        BoxId = c.Guid(nullable: false),
+                        BoxId = c.Guid(),
                         Operator = c.Guid(nullable: false),
                         CreatedTime = c.DateTime(nullable: false),
                         ModifiedTime = c.DateTime(nullable: false),
@@ -97,8 +97,8 @@ namespace Test.EntityFramework.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Box", t => t.BoxId)
                 .ForeignKey("dbo.DataDictionaryInfo", t => t.OperationTypeId)
-                .ForeignKey("dbo.Material", t => t.MaterialId)
-                .Index(t => t.MaterialId)
+                .ForeignKey("dbo.BadGoods", t => t.BadGoodsId)
+                .Index(t => t.BadGoodsId)
                 .Index(t => t.OperationTypeId)
                 .Index(t => t.BoxId);
             
@@ -791,7 +791,8 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.NoteList", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Material", "MaterialTypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.MaterialList", "MaterialId", "dbo.Material");
-            DropForeignKey("dbo.BadGoodsList", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.BadGoods", "MaterialId", "dbo.Material");
+            DropForeignKey("dbo.BadGoodsList", "BadGoodsId", "dbo.BadGoods");
             DropForeignKey("dbo.BadGoodsList", "OperationTypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.BadGoodsList", "BoxId", "dbo.Box");
             DropForeignKey("dbo.Box", "BoxTypeId", "dbo.DataDictionaryInfo");
@@ -838,7 +839,6 @@ namespace Test.EntityFramework.Migrations
             DropForeignKey("dbo.BusinessLog", "OperationCodeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.BusinessLog", "BusinessTypeId", "dbo.DataDictionaryInfo");
             DropForeignKey("dbo.BusinessLogList", "BusinessLogId", "dbo.BusinessLog");
-            DropForeignKey("dbo.BadGoods", "MaterialId", "dbo.Material");
             DropForeignKey("dbo.Accounts", "MaterialId", "dbo.Material");
             DropIndex("dbo.Stock", new[] { "MaterialId" });
             DropIndex("dbo.PreEntry", new[] { "MaterialId" });
@@ -893,7 +893,7 @@ namespace Test.EntityFramework.Migrations
             DropIndex("dbo.Box", new[] { "BoxTypeId" });
             DropIndex("dbo.BadGoodsList", new[] { "BoxId" });
             DropIndex("dbo.BadGoodsList", new[] { "OperationTypeId" });
-            DropIndex("dbo.BadGoodsList", new[] { "MaterialId" });
+            DropIndex("dbo.BadGoodsList", new[] { "BadGoodsId" });
             DropIndex("dbo.BadGoods", new[] { "MaterialId" });
             DropIndex("dbo.Material", new[] { "StorageBinId" });
             DropIndex("dbo.Material", new[] { "MaterialTypeId" });

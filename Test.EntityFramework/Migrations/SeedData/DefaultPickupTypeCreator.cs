@@ -36,21 +36,7 @@ namespace Test.EntityFramework.Migrations.SeedData
             dataDictionaryInfos.Add(dataDictionaryInfo4);
             var dictInfo = _context.Set<DataDictionaryInfo>().AddRange(dataDictionaryInfos);
 
-            //var dict = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty, DataDictionaryInfos = dataDictionaryInfos });
-
-
-
-
-
-            //var defaultType = _context.Editions.FirstOrDefault(e => e.Name == EditionManager.DefaultEditionName);
-            //if (defaultEdition == null)
-            //{
-            //    defaultEdition = new Edition { Name = EditionManager.DefaultEditionName, DisplayName = EditionManager.DefaultEditionName };
-            //    _context.Editions.Add(defaultEdition);
-            //    _context.SaveChanges();
-
-            //    //TODO: Add desired features to the standard edition, if wanted!
-            //}
+            //var dict2 = _context.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型", Operator = Guid.Empty, DataDictionaryInfos = dataDictionaryInfos });
         }
     }
 }

@@ -35,7 +35,7 @@ namespace ConsoleApp
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             //Thread.Sleep(3000);
-            TestRetrieveDataDictInfo();
+            //TestRetrieveDataDictInfo();
             //TestStudent();
             //TestUserRolePermission();
             //TestGetRolePermissions();
@@ -43,12 +43,79 @@ namespace ConsoleApp
             //TestQueryExits();
             //TestQueryPages();
             //TestQueryContains();
+            //TestCreateBatch();
 
+            TestDataDictionary();
 
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds);
             Console.ReadLine();
         }
+
+        private async static void TestDataDictionary()
+        {
+            List<DataDictionaryInfo> dataDictionaryInfos = new List<DataDictionaryInfo>();
+            int result = 0;
+            using (var db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var dict = await db.Set<DataDictionary>().AsNoTracking().FirstOrDefaultAsync();
+                        if (dict is null)
+                        {
+                            dict = db.Set<DataDictionary>().Add(new DataDictionary { DictionaryName = "仓储备货类型" });
+                            result = await db.SaveChangesAsync();
+                        }
+                        else
+                        {
+                            db.Set<DataDictionary>().Attach(dict);
+                        }
+
+                        DataDictionaryInfo dataDictionaryInfo1 = new DataDictionaryInfo { DictionaryCode = "1", DictionaryDescription = "正常", DataDictionary = dict };
+                        DataDictionaryInfo dataDictionaryInfo2 = new DataDictionaryInfo { DictionaryCode = "2", DictionaryDescription = "紧急", DataDictionary = dict };
+                        DataDictionaryInfo dataDictionaryInfo3 = new DataDictionaryInfo { DictionaryCode = "3", DictionaryDescription = "塔奥", DataDictionary = dict };
+                        DataDictionaryInfo dataDictionaryInfo4 = new DataDictionaryInfo { DictionaryCode = "4", DictionaryDescription = "诚众", DataDictionary = dict };
+                        dataDictionaryInfos.Add(dataDictionaryInfo1);
+                        dataDictionaryInfos.Add(dataDictionaryInfo2);
+                        dataDictionaryInfos.Add(dataDictionaryInfo3);
+                        dataDictionaryInfos.Add(dataDictionaryInfo4);
+                        var dictInfo = db.Set<DataDictionaryInfo>().AddRange(dataDictionaryInfos);
+                        result = await db.SaveChangesAsync();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        result = 0;
+                    }
+                    finally
+                    {
+                        if (result > 0)
+                        {
+                            tran.Commit();
+                        }
+                        else
+                        {
+                            tran.Rollback();
+                        }
+                    }
+                }
+            }
+        }
+
+        private async static void TestCreateBatch()
+        {
+            using (var db = new TestDbContext())
+            {
+                db.Database.Log = Console.WriteLine;
+                Batch batch = new Batch { BatchNo = "2018-01-01" };
+                db.Set<Batch>().Add(batch);
+                await db.SaveChangesAsync();
+            }
+        }
+
 
         private async static void TestRetrieveDataDictInfo()
         {
@@ -57,7 +124,7 @@ namespace ConsoleApp
                 db.Database.Log = Console.WriteLine;
 
                 var dict = await db.Set<DataDictionary>().AsNoTracking().FirstOrDefaultAsync(t => t.DictionaryName == DbFunctions.AsNonUnicode("仓储备货类型"));
-                
+
                 StringBuilder sb = new StringBuilder();
                 foreach (var item in dict.DataDictionaryInfos)
                 {

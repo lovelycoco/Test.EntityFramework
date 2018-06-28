@@ -14,6 +14,7 @@ namespace Test.EntityFramework.Maps
         {
             ToTable("BadGoods");
             HasKey(t => t.Id);
+            HasMany(t => t.BadGoodsLists).WithRequired(b=>b.BadGoods).HasForeignKey(b=>b.BadGoodsId).WillCascadeOnDelete(false);
         }
     }
 }
